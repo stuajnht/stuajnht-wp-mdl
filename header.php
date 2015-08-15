@@ -15,3 +15,5 @@
 		<?php wp_enqueue_script("jquery"); ?>
 		<?php wp_head(); ?>
 	</head>
+	<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+		
