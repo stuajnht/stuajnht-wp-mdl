@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 		<link rel="stylesheet" href="<?php bloginfo('stylesheet_url');?>">
 
-		<title><?php wp_title('|',1,'right'); ?> <?php bloginfo('name'); ?></title>
+		<title><?php wp_title('|',1,'right'); ?><?php bloginfo('name'); ?></title>
 
 		<?php wp_enqueue_script("jquery"); ?>
 		<?php wp_head(); ?>
