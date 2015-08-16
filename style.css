@@ -20,6 +20,9 @@ It is used as the main theme for the Stuajnht website (http://www.stuajnht.co.uk
   height: 70vh;
   background-color: #3F51B5;
   flex-shrink: 0;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .single-main {
