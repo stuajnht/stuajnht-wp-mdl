@@ -45,3 +45,27 @@ It is used as the main theme for the Stuajnht website (http://www.stuajnht.co.uk
 .single-content h3 {
   margin-top: 48px;
 }
+
+/* Images */
+img {
+  max-width: 100%;
+}
+.img-rounded {
+  border-radius: 6px;
+}
+
+.img-caption {
+  text-align: center;
+  background-color: #eee;
+  border-radius: 6px;
+  margin: 0 0 15px;
+  font-style: italic;
+  line-height: 1.72222;
+  padding-bottom: 6px;
+}
+
+.img-caption a img {
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+  padding-bottom: 6px;
+}
