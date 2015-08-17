@@ -14,6 +14,11 @@ This theme is a WordPress implementation of the Material Design Lite library.
 It is used as the main theme for the Stuajnht website (http://www.stuajnht.co.uk/)
 */
 
+/* Navigation layout */
+.mdl-layout__obfuscator {
+  position: fixed;
+}
+
 /* Single blog post */
 .single-banner-image {
   width: 100%;
