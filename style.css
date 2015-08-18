@@ -33,6 +33,7 @@ It is used as the main theme for the Stuajnht website (http://www.stuajnht.co.uk
 .single-main {
   margin-top: -35vh;
   flex-shrink: 0;
+  overflow: hidden;
 }
 
 .single-container {
