@@ -18,7 +18,7 @@
 		<?php wp_enqueue_script("jquery"); ?>
 		<?php wp_head(); ?>
 	</head>
-	<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
+	<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base animsition" data-animsition-in="fade-in" data-animsition-in-duration="1000">
 		<!-- Navigation header and drawer -->
 		<div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
 			<!-- Header -->

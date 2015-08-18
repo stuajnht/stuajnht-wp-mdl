@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <div class="single-banner-image" id="banner-image"></div>
-<main class="single-main mdl-layout__content animsition" data-animsition-in="fade-in" data-animsition-in-duration="1000">
+<main class="single-main mdl-layout__content">
 	<div class="single-container mdl-grid">
 		<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
 		<div class="single-content mdl-color--white mdl-shadow--4dp content mdl-color-text--grey-800 mdl-cell mdl-cell--10-col wow fadeInUp">
