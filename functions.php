@@ -7,6 +7,10 @@ function stuajnht_wp_mdl_scripts() {
 	// WOW.js script
 	wp_register_script( 'wow-js-script', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js', false, false, true );
 	wp_enqueue_script( 'wow-js-script' );
+	
+	// Animsition script
+	wp_register_script( 'animsition-script', 'https://cdnjs.cloudflare.com/ajax/libs/animsition/3.5.2/js/jquery.animsition.min.js', array( 'jquery' ), false, true );
+	wp_enqueue_script( 'animsition-script' );
 }
 
 add_action( 'wp_enqueue_scripts', 'stuajnht_wp_mdl_scripts' );
@@ -18,6 +22,9 @@ add_action( 'wp_enqueue_scripts', 'stuajnht_wp_mdl_scripts' );
 function stuajnht_wp_mdl_footer_js_init_scripts() {
 	// WOW.js
 	echo '<script>new WOW().init();</script>';
+	
+	// Animsition
+	echo '<script>jQuery(document).ready(function() {jQuery(".animsition").animsition({})});</script>';
 }
 
 // The footer_js_init_scripts must run after the wp_enqueue_script footer functions
