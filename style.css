@@ -19,6 +19,14 @@ It is used as the main theme for the Stuajnht website (http://www.stuajnht.co.uk
   position: fixed;
 }
 
+/* animsition loading animation */
+.wp-mdl-animistion-loading {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	z-index: 1000;
+}
+
 /* Single blog post */
 .single-banner-image {
   width: 100%;

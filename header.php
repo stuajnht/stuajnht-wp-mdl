@@ -18,9 +18,9 @@
 		<?php wp_enqueue_script("jquery"); ?>
 		<?php wp_head(); ?>
 	</head>
-	<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base animsition" data-animsition-in="fade-in" data-animsition-in-duration="1000">
+	<body class="mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
 		<!-- Navigation header and drawer -->
-		<div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button">
+		<div class="mdl-layout mdl-js-layout mdl-layout--overlay-drawer-button animsition" data-animsition-in="fade-in" data-animsition-in-duration="1000">
 			<!-- Header -->
 			<header class="mdl-layout__header">
 				<div class="mdl-layout-icon"></div>
