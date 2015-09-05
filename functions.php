@@ -24,7 +24,7 @@ function stuajnht_wp_mdl_footer_js_init_scripts() {
 	echo '<script>new WOW().init();</script>';
 	
 	// Animsition
-	echo '<script>jQuery(document).ready(function() {jQuery(".animsition").animsition({loading:true,loadingClass:"mdl-spinner mdl-js-spinner is-active wp-mdl-animistion-loading"})});</script>';
+	echo '<script>jQuery(document).ready(function() {jQuery(".animsition").animsition({loading:true})});</script>';
 }
 
 // The footer_js_init_scripts must run after the wp_enqueue_script footer functions
