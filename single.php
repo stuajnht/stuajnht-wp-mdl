@@ -1,5 +1,8 @@
 <?php get_header(); ?>
-<div class="single-banner-image" id="banner-image"></div>
+<div class="single-banner-image-container">
+	<div class="single-banner-image"></div>
+	<div class="single-banner-image" id="banner-image"></div>
+</div>
 <main class="single-main mdl-layout__content">
 	<div class="single-container mdl-grid">
 		<div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>

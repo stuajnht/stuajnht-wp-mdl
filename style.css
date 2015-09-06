@@ -36,6 +36,17 @@ It is used as the main theme for the Stuajnht website (http://www.stuajnht.co.uk
   background-position: 50%;
   background-repeat: no-repeat;
   background-size: cover;
+  position: absolute;
+}
+
+.single-banner-image-container {
+  width: 100%;
+  height: 70vh;
+  flex-shrink: 0;
+}
+
+#banner-image {
+  display: none;
 }
 
 .single-main {
