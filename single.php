@@ -18,6 +18,13 @@
 	</div>
 </main>
 <script>
-	document.getElementById("banner-image").style.backgroundImage = "url(<?php echo $bannerImage; ?>)";
+	jQuery(document).ready(function() {
+		var img = new Image();
+		img.onload = function(){
+			jQuery('#banner-image').css({'background-image': 'url(<?php echo $bannerImage; ?>)'});
+			jQuery('#banner-image').fadeIn(1000);
+		}
+		img.src = '<?php echo $bannerImage; ?>';
+	});
 </script>
 <?php get_footer(); ?>
