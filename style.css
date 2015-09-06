@@ -19,6 +19,11 @@ It is used as the main theme for the Stuajnht website (http://www.stuajnht.co.uk
   position: fixed;
 }
 
+/* wow.js reveal animations */
+.wow {
+  visibility: hidden;
+}
+
 /* animsition loading animation */
 .wp-mdl-animistion-loading {
 	position: absolute;
