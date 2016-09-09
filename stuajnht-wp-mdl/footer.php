@@ -2,7 +2,7 @@
     <footer class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
         <div class="mdl-logo">
-          More Information
+          <?php bloginfo('name'); ?>
         </div>
         <?php wp_nav_menu( array(
                                   'theme_location' => 'footer-main-menu',
