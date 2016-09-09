@@ -4,12 +4,12 @@
         <div class="mdl-logo">
           More Information
         </div>
-        <ul class="mdl-mini-footer__link-list">
-          <li><a href="#">Help</a></li>
-          <li><a href="#">Privacy and Terms</a></li>
-          <li><a href="#">User Agreement</a></li>
-          <?php wp_nav_menu( array( 'theme_location' => 'footer-main-menu' ) ); ?>
-        </ul>
+        <?php wp_nav_menu( array(
+                                  'theme_location' => 'footer-main-menu',
+                                  'menu_class' => 'mdl-mini-footer__link-list',
+                                  'container' => '',
+                                  'fallback_cb' => ''
+                                ) ); ?>
       </div>
       <?php if ( has_nav_menu( 'footer-social-menu' ) ) { // Check for footer social menu ?>
       <div class="mdl-mini-footer__right-section">
