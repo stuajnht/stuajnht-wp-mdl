@@ -12,3 +12,14 @@ Text Domain: stuajnht-wp-mdl
 This theme is a WordPress implementation of the Material Design Lite library.
 It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.uk/)
 */
+
+/****************
+ *    Footer    *
+ ****************/
+
+/**
+ * Social icons colour, which should be the same as the main footer background
+ */
+.mdl-mini-footer__social-btn-icon {
+  color: #424242;
+}

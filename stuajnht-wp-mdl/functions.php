@@ -119,7 +119,7 @@ class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
 		 * @param int    $depth Depth of menu item. Used for padding.
 		 */
 		$icon = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
-		$icon = '<i class="zmdi zmdi-hc-3x zmdi-' . strtolower($icon) . '"></i>';
+		$icon = '<i class="mdl-mini-footer__social-btn-icon zmdi zmdi-hc-3x zmdi-' . strtolower($icon) . '"></i>';
 
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .'>';
