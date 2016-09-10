@@ -1,5 +1,6 @@
 <?php get_header(); ?>
 
+<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="mdl-grid">
   <!-- Cell -->
     <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
@@ -62,5 +63,10 @@
     </div>
   <!-- End Cell -->
 </div>
+<?php endwhile; else : ?>
+<article class="no-posts">
+  <h1>No posts were found.</h1>
+</article>
+<?php endif; ?>
 
 <?php get_footer(); ?>
