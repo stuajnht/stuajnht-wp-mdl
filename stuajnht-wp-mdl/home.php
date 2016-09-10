@@ -7,8 +7,12 @@
       <div class="mdl-card__title"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
-                $mdlCardTiteStyles = " style=\"background-image: url('" . the_post_thumbnail_url() . "');";
-                echo $mdlCardTiteStyles;
+                // Note: This seems hacky. The "the_post_thumbnail_url()" always seems to
+                //       echo out the output, so can't be saved into a variable. Creating
+                //       the background-image url around it is the only way to get it to work
+                echo " style=\"background-image: url('";
+                  the_post_thumbnail_url();
+                echo "');\"";
               }
            ?>>
         <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
