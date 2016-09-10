@@ -13,6 +13,24 @@ This theme is a WordPress implementation of the Material Design Lite library.
 It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.uk/)
 */
 
+/*******************
+ * Blog Post Cards *
+ *******************/
+
+/**
+ * Set the cards that show the blog posts on home.php to have an image height
+ * of 176px (from the MDL components page) and a text colour of white.
+ *
+ * Also set the background image to be centered and cover the div
+ */
+.mdl-card__title {
+  color: #fff;
+  height: 176px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
 /****************
  *    Footer    *
  ****************/
