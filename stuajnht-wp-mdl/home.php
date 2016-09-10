@@ -5,13 +5,16 @@
   <!-- Cell -->
     <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
       <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Welcome</h2>
+        <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       </div>
       <div class="mdl-card__supporting-text">
-        The Sky Tower is an observation and telecommunications tower located in Auckland, New Zealand. It is 328 metres (1,076 ft) tall, making it the tallest man-made structure in the Southern Hemisphere.
+        Posted on <?php the_date(get_option('date_format')); ?>
+      </div>
+      <div class="mdl-card__supporting-text">
+        <?php the_excerpt(); ?>
       </div>
       <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
+        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="<?php the_permalink(); ?>">
             Read More
           </a>
       </div>
