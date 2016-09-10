@@ -8,6 +8,11 @@ function stuajnht_wp_mdl_scripts() {
 add_action( 'wp_enqueue_scripts', 'stuajnht_wp_mdl_scripts' );
 
 /**
+ * Registering support for feature images (post thumbnails) for blog posts
+ */
+add_theme_support( 'post-thumbnails' );
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:
