@@ -21,6 +21,7 @@
                                   'theme_location' => 'footer-social-menu',
                                   'container_class' => 'mdl-mini-footer__right-section',
                                   'fallback_cb' => '',
+                                  'items_wrap' => '%3$s',
                                   'walker' => new stuajnht_wp_mdl_walker_nav_footer_social_Menu
                                 ) ); ?>
       <?php } // End of check for footer social menu ?>
