@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
-<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <div class="mdl-grid">
+  <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
   <!-- Cell -->
     <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
       <div class="mdl-card__title">
@@ -22,51 +22,16 @@
       </div>
     </div>
   <!-- End Cell -->
-  <!-- Cell -->
-    <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
+  <?php endwhile; else : ?>
+    <div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
       <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Welcome</h2>
+        <h2 class="mdl-card__title-text">Well, this isn't quite right&hellip;</h2>
       </div>
       <div class="mdl-card__supporting-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Get Started
-          </a>
-      </div>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-          </button>
+        I'm sorry. I looked everywhere I could, but there doesn't seem to be any posts. Perhaps a friendly email to the webmaster may get things rolling?
       </div>
     </div>
-  <!-- End Cell -->
-  <!-- Cell -->
-    <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
-      <div class="mdl-card__title">
-        <h2 class="mdl-card__title-text">Welcome</h2>
-      </div>
-      <div class="mdl-card__supporting-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris sagittis pellentesque lacus eleifend lacinia...
-      </div>
-      <div class="mdl-card__actions mdl-card--border">
-        <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect">
-            Get Started
-          </a>
-      </div>
-      <div class="mdl-card__menu">
-        <button class="mdl-button mdl-button--icon mdl-js-button mdl-js-ripple-effect">
-            <i class="material-icons">share</i>
-          </button>
-      </div>
-    </div>
-  <!-- End Cell -->
+  <?php endif; ?>
 </div>
-<?php endwhile; else : ?>
-<article class="no-posts">
-  <h1>No posts were found.</h1>
-</article>
-<?php endif; ?>
 
 <?php get_footer(); ?>
