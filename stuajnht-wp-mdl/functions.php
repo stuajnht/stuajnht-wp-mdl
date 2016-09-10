@@ -108,7 +108,7 @@ class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
 		$title = apply_filters( 'the_title', $item->title, $item->ID );
 
 		/**
-		 * Filters a menu item's title.
+		 * Filters a menu item's title, and creates a social icon from the name
 		 *
 		 * @since 4.4.0
 		 *
@@ -118,6 +118,7 @@ class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
 		 * @param int    $depth Depth of menu item. Used for padding.
 		 */
 		$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+		$title = '<i class="zmdi zmdi-hc-2x zmdi-' . strtolower($title) . '"></i>';
 
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .'>';
