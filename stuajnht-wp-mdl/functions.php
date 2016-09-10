@@ -29,14 +29,15 @@ function stuajnht_wp_mdl_menus() {
  * Creating a custom menu walker class, so that the footer social
  * menu can have icons for the links
  *
+ * This is based on the Walder_Nav_Menu class in the wp-includes
+ * folder, but modified to create custom social icons, using Material
+ * Design Iconic Font social icons, instead of the name of the link
+ *
  * See: http://stackoverflow.com/a/12251157
  */
 class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
   function start_el ( &$output, $item, $depth = 0, $args = array(), $id = 0 ) {
     $indent = ( $depth ) ? str_repeat( "\t", $depth ) : '';
-
-		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
-		$classes[] = 'menu-item-' . $item->ID;
 
 		/**
 		 * Filters the arguments for a single nav menu item.
@@ -112,17 +113,17 @@ class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
 		 *
 		 * @since 4.4.0
 		 *
-		 * @param string $title The menu item's title.
+		 * @param string icon The menu item's icon.
 		 * @param object $item  The current menu item.
 		 * @param array  $args  An array of wp_nav_menu() arguments.
 		 * @param int    $depth Depth of menu item. Used for padding.
 		 */
-		$title = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
-		$title = '<i class="zmdi zmdi-hc-2x zmdi-' . strtolower($title) . '"></i>';
+		$icon = apply_filters( 'nav_menu_item_title', $title, $item, $args, $depth );
+		$icon = '<i class="zmdi zmdi-hc-2x zmdi-' . strtolower($icon) . '"></i>';
 
 		$item_output = $args->before;
 		$item_output .= '<a'. $attributes .'>';
-		$item_output .= $args->link_before . $title . $args->link_after;
+		$item_output .= $args->link_before . $icon . $args->link_after;
 		$item_output .= '</a>';
 		$item_output .= $args->after;
 
