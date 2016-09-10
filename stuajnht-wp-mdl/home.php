@@ -8,7 +8,7 @@
            <?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
-                $mdlCardTiteStyles .= ' style="background-image: url("' . the_post_thumbnail_url() . '");';
+                $mdlCardTiteStyles .= " style=\"background-image: url('" . the_post_thumbnail_url() . "');";
                 echo $mdlCardTiteStyles;
               }
            ?>
