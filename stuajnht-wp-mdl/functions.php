@@ -50,18 +50,9 @@ class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
 		$args = apply_filters( 'nav_menu_item_args', $args, $item, $depth );
 
 		/**
-		 * Filters the CSS class(es) applied to a menu item's list item element.
-		 *
-		 * @since 3.0.0
-		 * @since 4.1.0 The `$depth` parameter was added.
-		 *
-		 * @param array  $classes The CSS classes that are applied to the menu item's `<li>` element.
-		 * @param object $item    The current menu item.
-		 * @param array  $args    An array of wp_nav_menu() arguments.
-		 * @param int    $depth   Depth of menu item. Used for padding.
+		 * The social icon buttons need to have a class of mdl-mini-footer__social-btn
 		 */
-		$class_names = join( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item, $args, $depth ) );
-		$class_names = $class_names ? ' class="' . esc_attr( $class_names ) . '"' : '';
+		$class_names = ' class="mdl-mini-footer__social-btn"';
 
 		/**
 		 * Filters the ID applied to a menu item's list item element.
@@ -77,7 +68,7 @@ class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
 		$id = apply_filters( 'nav_menu_item_id', 'menu-item-'. $item->ID, $item, $args, $depth );
 		$id = $id ? ' id="' . esc_attr( $id ) . '"' : '';
 
-		$output .= $indent . '<li' . $id . $class_names .'>';
+		$output .= $indent . '<button' . $id . $class_names .'>';
 
 		$atts = array();
 		$atts['title']  = ! empty( $item->attr_title ) ? $item->attr_title : '';
@@ -152,6 +143,6 @@ class stuajnht_wp_mdl_walker_nav_footer_social_Menu extends Walker_Nav_Menu {
   }
 
   function end_el( &$output, $item, $depth = 0, $args = array() ) {
-    $output .= "</li>\n";
+    $output .= "</button>\n";
   }
 }
