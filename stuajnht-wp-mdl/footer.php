@@ -1,3 +1,6 @@
+    <!-- End main content -->
+    </div>
+  </main>
   <?php if ( has_nav_menu( 'footer-main-menu' ) ) { // Check for footer main menu ?>
     <footer class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
