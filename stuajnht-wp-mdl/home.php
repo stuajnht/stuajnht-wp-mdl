@@ -4,15 +4,13 @@
   <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
   <!-- Cell -->
     <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
-      <div class="mdl-card__title"
-           <?php
+      <div class="mdl-card__title"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
                 $mdlCardTiteStyles = " style=\"background-image: url('" . the_post_thumbnail_url() . "');";
                 echo $mdlCardTiteStyles;
               }
-           ?>
-           >
+           ?>>
         <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       </div>
       <div class="mdl-card__supporting-text">
