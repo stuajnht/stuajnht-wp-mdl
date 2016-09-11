@@ -3,7 +3,7 @@
 <div class="mdl-grid">
   <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
   <!-- Cell -->
-    <div class="mdl-cell mdl-cell--4-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
       <div class="mdl-card__title"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
