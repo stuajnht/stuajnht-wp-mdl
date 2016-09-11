@@ -46,10 +46,12 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
 
 /**
  * Setting the card title text to be white with no underline on the link
+ * Also setting a black border around it, so it is visible on light images
  */
 .mdl-card__title-text > a {
   color: #fff;
   text-decoration: none;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 /****************
