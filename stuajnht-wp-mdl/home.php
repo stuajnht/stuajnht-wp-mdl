@@ -1,9 +1,69 @@
-<?php get_header(); ?>
+<?php get_header();
+
+/**
+ * Gets a random number for the cell width
+ *
+ * To size the cells on the page in a semi-random order, a cell width
+ * of either 4, 5, 6, 7, 8, 12 is chosen. As the MDL uses a grid of
+ * 12 columns, the random number picked has an equal (of 12 - number),
+ * which is shown below:
+ *   4 => 4 or 8
+ *   5 => 7
+ *   6 => 6
+ *   7 => 5
+ *   8 => 4
+ *   12 (on its own row)
+ *
+ * To get this to work, tis function generates a random number between
+ * 0 and 5 (for each item in the list above) or if $decider is passed,
+ * then either 4 or 8 is returned to fix a problem where an initial
+ * cell width of 4 leads to ambiguity of what could fill the remaining
+ * row space
+ *
+ * @param bool $decider Should we generate a position for the array
+ *                      or to break row ambiguity
+ * @returns int The width of the 1st cell on the row
+ */
+function getCellColumnWidth($decider = false) {
+  if ($decider) {
+    // Returns either 4 or 8, depending on a random choice
+    return (rand(0, 1) ? 4 : 8);
+  } else {
+    // Return a number for the position of $cellColumnWidthArray
+    return rand(0, 5);
+  }
+}
+$cellColumnWidthArray = array(4, 5, 6, 7, 8, 12);
+$cellColumnWidth = 0;
+
+?>
 
 <div class="mdl-grid">
-  <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+  <?php if (have_posts()) : while (have_posts()) : the_post();
+  
+  // Deciding the width of the cell
+  if ($cellColumnWidth == 0) {
+    // We have used up all of the available cells for the row,
+    // so get a new number for the first cell
+    $currentCellWidth = $cellColumnWidthArray[getCellColumnWidth()];
+    $cellColumnWidth = 12 - $currentCellWidth;
+  } else {
+    // The first cell was 4, so choose either 4 or 8 for the
+    // remaining cells on the row
+    if ($cellColumnWidth == 8) {
+      $currentCellWidth = getCellColumnWidth(true);
+      $cellColumnWidth = $cellColumnWidth - $currentCellWidth;
+    } else {
+      // Set the $currentCellWidth to be whatever is left from
+      // the first cell on the row
+      $currentCellWidth = $cellColumnWidth;
+      $cellColumnWidth = 0;
+    }
+  }
+  
+  ?>
   <!-- Cell -->
-    <div class="mdl-cell mdl-cell--4-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+    <div class="mdl-cell mdl-cell--<?php echo $currentCellWidth; ?>-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
       <div class="mdl-card__title"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
