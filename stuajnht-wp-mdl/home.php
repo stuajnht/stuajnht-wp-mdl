@@ -79,7 +79,7 @@ $cellColumnWidth = 0;
                 // image included in this theme. The image chosen is based on the
                 // first character of a MD5 hash of the post title
                 echo " style=\"background-image: url('"
-                  . get_template_directory_uri() . '/images/post-thumbnails/'. getFeatureImagePlaceholder(the_title()) . '.jpg'
+                  . get_template_directory_uri() . '/images/post-thumbnails/'. getFeatureImagePlaceholder(the_title('', '', false)) . '.jpg'
                   . "');\"";
               }
            ?>>
