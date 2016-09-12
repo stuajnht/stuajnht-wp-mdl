@@ -73,6 +73,14 @@ $cellColumnWidth = 0;
                 echo " style=\"background-image: url('";
                   the_post_thumbnail_url();
                 echo "');\"";
+              } else {
+                // A feature image hasn't been included in the post, so to avoid
+                // the cards looking a bit weird / empty, include a "placeholder"
+                // image included in this theme. The image chosen is based on the
+                // first character of a MD5 hash of the post title
+                echo " style=\"background-image: url('"
+                  . get_template_directory_uri() . '/images/post-thumbnails/'. getFeatureImagePlaceholder(the_title()) . '.jpg'
+                  . "');\"";
               }
            ?>>
         <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>

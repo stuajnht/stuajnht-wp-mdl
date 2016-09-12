@@ -13,6 +13,21 @@ add_action( 'wp_enqueue_scripts', 'stuajnht_wp_mdl_scripts' );
 add_theme_support( 'post-thumbnails' );
 
 /**
+ * Generates a feature image to show if one has not been set, based on
+ * the title of the post
+ *
+ * If a feature image hasn't been included with the post, to prevent an
+ * empty space appearing on the website, a "placeholder" image is chosen
+ * based on the first character of a MD5 hash of the post title
+ *
+ * @param string $postTitle The title of the post to generate the image from
+ * @returns string An hexadecimal character generated from the post title
+ */
+function getFeatureImagePlaceholder($postTitle = "stuajnht") {
+	return substr(md5($postTitle), 0, 1);
+}
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:
