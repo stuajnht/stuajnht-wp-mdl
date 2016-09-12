@@ -3,6 +3,16 @@ function stuajnht_wp_mdl_scripts() {
 	// MDL main script
 	wp_register_script( 'material-script', 'https://code.getmdl.io/1.2.1/material.min.js', false, false, true );
 	wp_enqueue_script( 'material-script' );
+
+	// Wait for images - https://github.com/alexanderdickson/waitForImages
+	// Fades in CSS background-url images when they're loaded
+	wp_register_script( 'waitforimages', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.waitforimages/1.5.0/jquery.waitforimages.min.js', array ('jquery'), false, true );
+	wp_enqueue_script( 'waitforimages' );
+
+	// Adding in custom stuajnht-wp-mdl scripts
+	$stuajnht_wp_mdl_script = get_template_directory_uri() . '/js/stuajnht-wp-mdl.js';
+  wp_register_script( 'stuajnht-wp-mdl',  $stuajnht_wp_mdl_script, array ('jquery'), false, true);
+	wp_enqueue_script( 'stuajnht-wp-mdl' );
 }
 
 add_action( 'wp_enqueue_scripts', 'stuajnht_wp_mdl_scripts' );
