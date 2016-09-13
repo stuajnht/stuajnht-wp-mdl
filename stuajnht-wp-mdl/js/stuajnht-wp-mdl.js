@@ -7,7 +7,7 @@
       each: function() {
         // All descendant images have loaded, now slide up.
         console.log("hi");
-        $(this).fadeOut(10000);
+        $(this).hide().fadeIn(10000);
       },
       waitForAll: true
     });

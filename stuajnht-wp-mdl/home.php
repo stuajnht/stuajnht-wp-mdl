@@ -64,7 +64,9 @@ $cellColumnWidth = 0;
   ?>
   <!-- Cell -->
     <div id="mdl-cell--post-<?php the_id(); ?>" class="mdl-cell mdl-cell--<?php echo $currentCellWidth; ?>-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-      <div id="mdl-card__title-post-<?php the_id(); ?>" class="mdl-card__title"<?php
+      <div id="mdl-card__post__background-color-<?php the_id(); ?>" class="mdl-card__title">
+      </div>
+      <div id="mdl-card__post__feature-image-<?php the_id(); ?>" class="mdl-card__title"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
                 // Note: This seems hacky. The "the_post_thumbnail_url()" always seems to
@@ -83,6 +85,8 @@ $cellColumnWidth = 0;
                   . "');\"";
               }
            ?>>
+      </div>
+      <div id="mdl-card__title-post__title-text-<?php the_id(); ?>" class="mdl-card__title">
         <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       </div>
       <div class="mdl-card__supporting-text">
