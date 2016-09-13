@@ -5,9 +5,8 @@
     // Setting up all background images to fade in upon load
     $('.mdl-card__title').waitForImages({
       each: function() {
-        // All descendant images have loaded, now slide up.
-        console.log("hi");
-        $(this).hide().fadeIn(10000);
+        // All descendant images have loaded, now fade in
+        $(this).hide().fadeIn(1000);
       },
       waitForAll: true
     });
