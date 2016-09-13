@@ -11,9 +11,11 @@
       },
       waitForAll: true
     });
-    
+
     // Preventing parent opacity of the card post images fading
     // any child classes: http://www.impressivewebs.com/fixing-parent-child-opacity/
-    thatsNotYoChild('mdl-card__title');
+    $('.mdl-card__title').each(function() {
+      //thatsNotYoChild(this.id);
+    });
   });
 }(jQuery));

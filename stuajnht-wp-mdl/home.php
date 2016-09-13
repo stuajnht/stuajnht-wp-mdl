@@ -63,8 +63,8 @@ $cellColumnWidth = 0;
   
   ?>
   <!-- Cell -->
-    <div class="mdl-cell mdl-cell--<?php echo $currentCellWidth; ?>-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-      <div class="mdl-card__title"<?php
+    <div id="mdl-cell--post-<?php the_id(); ?>" class="mdl-cell mdl-cell--<?php echo $currentCellWidth; ?>-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
+      <div id="mdl-card__title-post-<?php the_id(); ?>" class="mdl-card__title"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
                 // Note: This seems hacky. The "the_post_thumbnail_url()" always seems to
