@@ -64,7 +64,21 @@ $cellColumnWidth = 0;
   ?>
   <!-- Cell -->
     <div id="mdl-cell--post-<?php the_id(); ?>" class="mdl-cell mdl-cell--<?php echo $currentCellWidth; ?>-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-      <div id="mdl-card__post__background-color-<?php the_id(); ?>" class="mdl-card__title">
+      <div id="mdl-card__post__background-color-<?php the_id(); ?>" class="mdl-card__title"<?php
+              // Setting the background colour to the the dominant colour
+              // of the post image, so there is something to show while
+              // the image itself loads
+              if (has_post_thumbnail()) {
+                
+              } else {
+                // There isn't a feature image for this post, so get the dominant
+                // colour of the "placeholder" image. The image chosen is based on the
+                // first character of a MD5 hash of the post title
+                echo " style=\"background-color: "
+                  . getFeatureImagePlaceholderColour(getFeatureImagePlaceholder(the_title('', '', false)), $dominantColours)
+                  . ';"';
+              }
+           ?>>
       </div>
       <div id="mdl-card__post__feature-image-<?php the_id(); ?>" class="mdl-card__title mdl-card__title-overlay__feature-image"<?php
               // Setting the card post image to that of the blog post

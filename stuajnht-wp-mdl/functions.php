@@ -44,6 +44,47 @@ function getFeatureImagePlaceholder($postTitle = "stuajnht") {
 }
 
 /**
+ * Gets the dominant colour for the default feature image placeholders
+ * so the background colour can be set
+ *
+ * A value of "d" is given as default text, as this is the first MD5
+ * character for the default getFeatureImagePlaceholder parameter
+ *
+ * These values have been pre-calculated from the default images using
+ * color thief (http://lokeshdhakar.com/projects/color-thief/). The key
+ * of the array is the hex character of the placeholder image. To prevent
+ * the constant construction and descruction of this array, it is created
+ * and stored outside the function and passed by reference
+ *
+ * @param string $placeholderImageName The hexadecimal character to get
+ *                                     the colour of
+ * @param array $dominantColoursArray A reference to the array of the
+ *                                    dominant colours of placeholder images
+ * @returns string A rgb representation of the dominant colour
+ */
+function getFeatureImagePlaceholderColour($placeholderImageName = "d", $dominantColoursArray) {
+	return $dominantColoursArray[$placeholderImageName];
+}
+$dominantColours = array(
+  "0" => "rgb(245, 126, 6)",
+  "1" => "rgb(207, 46, 44)",
+  "2" => "rgb(251, 178, 223)",
+  "3" => "rgb(236, 242, 44)",
+  "4" => "rgb(170, 179, 224)",
+  "5" => "rgb(7, 215, 80)",
+  "6" => "rgb(197, 217, 88)",
+	"7" => "rgb(251, 198, 40)",
+	"8" => "rgb(4, 67, 65)",
+	"9" => "rgb(136, 42, 168)",
+	"a" => "rgb(181, 218, 163)",
+	"b" => "rgb(219, 58, 55)",
+	"c" => "rgb(116, 206, 248)",
+	"d" => "rgb(97, 60, 177)",
+	"e" => "rgb(246, 156, 33)",
+	"f" => "rgb(245, 185, 57)"
+);
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:
