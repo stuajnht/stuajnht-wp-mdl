@@ -134,4 +134,12 @@ $cellColumnWidth = 0;
   <?php endif; ?>
 </div>
 
+<?php
+if (function_exists('pagination')) {
+  echo '<div class="mdl-grid">';
+  pagination($additional_loop->max_num_pages);
+  echo '</div>';
+}
+?>
+
 <?php get_footer(); ?>
