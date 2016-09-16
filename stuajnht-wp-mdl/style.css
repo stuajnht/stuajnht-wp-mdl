@@ -80,46 +80,30 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
  * See: https://www.reddit.com/r/MaterialDesign/comments/3e96h7/pagination/ctcrqpt
  */
 .pagination-container {
-  width: 960px;
+  width: 100%;
   margin-left: auto;
   margin-right: auto;
-  left: 0;
-  right: 0;
-  bottom: 30px;
-  position: absolute;
-  font-family: 'Roboto', sans-serif;
 }
-.pagination {
-  font-size: 20px;
+
+.pagination-items {
   text-align: center;
+  padding-bottom: 10px;
 }
+
 .pagination-item {
-      height: 30px;
-      width: 30px;
-      color: rgba(0,0,0,.5);
-      transition: color 2s;
-      cursor: pointer;
-      display: inline-block;
-      line-height: 30px;
-    }
-    .pagination-active {
-      background: #2196F3;
-      border-radius: 50%;
-      color: white;
-    }
-    .pagination-active:hover{
-      color: white;
-    }
-    .pagination-item:hover{
-      color: rgba(0,0,0,1);
-      transition: color 2s;
-    }
-    .pagination-item:first-child{
-      margin-left: 10px;
-    }
-    .pagination-item:last-child{
-      margin-right: 10px;
-    }
+  display: inline-block;
+  line-height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.pagination-item:first-child {
+  margin-left: 10px;
+}
+
+.pagination-item:last-child {
+  margin-right: 10px;
+}
 
 /****************
  *    Footer    *
