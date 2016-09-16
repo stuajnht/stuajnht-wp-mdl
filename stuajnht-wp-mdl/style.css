@@ -79,38 +79,7 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
  *
  * See: https://www.reddit.com/r/MaterialDesign/comments/3e96h7/pagination/ctcrqpt
  */
-.container{
-  .pagination{
-    span{
-      height: 30px;
-      width: 30px;
-      color: rgba(0,0,0,.5);
-      transition: color 2s;
-      cursor: pointer;
-      display: inline-block;
-      line-height: 30px;
-    }
-    span[active]{
-      background: #2196F3;
-      border-radius: 50%;
-      color: white;
-    }
-    span[active]:hover{
-      color: white;
-    }
-    span:hover{
-      color: rgba(0,0,0,1);
-      transition: color 2s;
-    }
-    span:first-child{
-      margin-left: 10px;
-    }
-    span:last-child{
-      margin-right: 10px;
-    }
-    font-size: 20px;
-    text-align: center;
-  }
+.pagination-container {
   width: 960px;
   margin-left: auto;
   margin-right: auto;
@@ -120,6 +89,37 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   position: absolute;
   font-family: 'Roboto', sans-serif;
 }
+.pagination {
+  font-size: 20px;
+  text-align: center;
+}
+.pagination-item {
+      height: 30px;
+      width: 30px;
+      color: rgba(0,0,0,.5);
+      transition: color 2s;
+      cursor: pointer;
+      display: inline-block;
+      line-height: 30px;
+    }
+    .pagination-active {
+      background: #2196F3;
+      border-radius: 50%;
+      color: white;
+    }
+    .pagination-active:hover{
+      color: white;
+    }
+    .pagination-item:hover{
+      color: rgba(0,0,0,1);
+      transition: color 2s;
+    }
+    .pagination-item:first-child{
+      margin-left: 10px;
+    }
+    .pagination-item:last-child{
+      margin-right: 10px;
+    }
 
 /****************
  *    Footer    *
