@@ -68,6 +68,12 @@ function pagination($pages = '', $range = 4) {
   >
   </div>
 </div>
+
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+<form>
+    <button formaction="http://stackoverflow.com">Go to stackoverflow!</button>
+</form>
 */
 
   if (1 != $pages) {
@@ -77,7 +83,7 @@ function pagination($pages = '', $range = 4) {
  
     for ($i=1; $i <= $pages; $i++) {
       if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
-        echo ($paged == $i)? "<span class=\"pagination-item pagination-active\">".$i."</span>":"<span class=\"pagination-item\"><a href='".get_pagenum_link($i)."'>".$i."</a></span>";
+        echo ($paged == $i)? '<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">'.$i."</button>":'<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect">'."<a href='".get_pagenum_link($i)."'>".$i."</a></button>";
       }
     }
  
