@@ -24,6 +24,14 @@ function stuajnht_wp_mdl_scripts() {
 add_action( 'wp_enqueue_scripts', 'stuajnht_wp_mdl_scripts' );
 
 /**
+ * Replacing the_excerpt [...] with a genuine ellipsis character
+ */
+function replace_excerpt_ellipsis($content) {
+	return str_replace('[&hellip;]','&hellip;',$content);
+}
+add_filter('the_excerpt', 'replace_excerpt_ellipsis');
+
+/**
  * Registering support for feature images (post thumbnails) for blog posts
  */
 add_theme_support( 'post-thumbnails' );
