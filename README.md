@@ -1,6 +1,11 @@
 # stuajnht-wp-mdl
 A WordPress theme based on the Material Design Lite library (http://www.getmdl.io/)
 
+# Dependencies
+## Dominant Colors Lazy Loading
+While not needed, this theme makes use of the [Dominant Colors Lazy Loading](https://wordpress.org/plugins/dominant-colors-lazy-loading/) WordPress plugin to generate the dominant colour for post feature images. Please install it to your WordPress installation should you wish to use it.
+**Note**: This plugin uses the PHP [Imagemagick](http://php.net/manual/en/book.imagick.php) functions. Please make sure your hosting provider support this before trying to install the plugin.
+
 # Components
 This section explains the [various components](https://getmdl.io/components/index.html) from Material Design Light used in this theme, and how they are enabled or used. 
 
@@ -19,6 +24,9 @@ Create a menu and assign it a theme location of "Footer Social Menu".
 
 Create a custom link with the URL to the external website and a link text that is one of the [Material Design Iconic Font social icons](http://zavoloklom.github.io/material-design-iconic-font/icons.html#social) (GitHub in the exmaple below). The social icons will then appear.
 ![Footer social menu custom link](/resources/readme/footer/footer-example--social-menu--custom-link.png?raw=true "Footer social menu custom link")
+
+# Feature Images
+Default feature images use those provided by Oxygenna. Please see the relevant [README](/images/post-thumbnails/README.md) for more information.
 
 # Issues & Requests
 Please report any bugs via http://issuetemplate.com/#/stuajnht/stuajnht-wp-mdl/bug
