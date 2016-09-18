@@ -36,6 +36,24 @@ function getCellColumnWidth($decider = false) {
 $cellColumnWidthArray = array(4, 5, 6, 7, 8, 12);
 $cellColumnWidth = 0;
 
+/**
+ * Checking if there are any more posts that should be displayed
+ *
+ * To prevent an inbalanced last row, if the random creation
+ * of previous cards leaves 1 item left, we cheat and change
+ * the chosen width for the cell to take up the remaining column space
+ *
+ * See: https://codex.wordpress.org/Function_Reference/have_posts
+ */
+function lastPost() {
+  global $wp_query;
+  if ($wp_query->current_post + 1 < $wp_query->post_count) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 ?>
 
 <div class="mdl-grid">
@@ -47,12 +65,24 @@ $cellColumnWidth = 0;
     // so get a new number for the first cell
     $currentCellWidth = $cellColumnWidthArray[getCellColumnWidth()];
     $cellColumnWidth = 12 - $currentCellWidth;
+
+    // Making the last card take up all 12 columns on the page
+    if (lastPost()) {
+      $currentCellWidth = 12;
+    }
   } else {
     // The first cell was 4, so choose either 4 or 8 for the
     // remaining cells on the row
     if ($cellColumnWidth == 8) {
       $currentCellWidth = getCellColumnWidth(true);
       $cellColumnWidth = $cellColumnWidth - $currentCellWidth;
+
+      // Making the last card take up all 8 columns on the page
+      // (we should only end up here if there is already a 4
+      // column card on the row)
+      if (lastPost()) {
+        $currentCellWidth = 8;
+      }
     } else {
       // Set the $currentCellWidth to be whatever is left from
       // the first cell on the row
