@@ -105,6 +105,10 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   margin-right: 10px;
 }
 
+.pagination-item-content {
+  margin-top: 5px;
+}
+
 /****************
  *    Footer    *
  ****************/

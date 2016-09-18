@@ -82,29 +82,29 @@ function pagination($pages = '', $range = 4) {
 
     // First and previous links
     if ($paged > 2 && $paged > $range+1 && $showitems < $pages) {
-      echo $linkPrefix.get_pagenum_link(1).'"><i class="zmdi zmdi-skip-previous"></i></a>';
+      echo $linkPrefix.get_pagenum_link(1).'"><div class="pagination-item-content"><i class="zmdi zmdi-skip-previous"></i></div></a>';
     }
     if ($paged > 1 && $showitems < $pages) {
-      echo $linkPrefix.get_pagenum_link($paged - 1).'"><i class="zmdi zmdi-caret-left"></i></a>';
+      echo $linkPrefix.get_pagenum_link($paged - 1).'"><div class="pagination-item-content"><i class="zmdi zmdi-caret-left"></i></div></a>';
     }
  
     // Numbered links
     for ($i=1; $i <= $pages; $i++) {
       if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
         if ($paged == $i) {
-          echo '<a class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored pagination-item" href="'.get_pagenum_link($i).'">'.$i."</a>";
+          echo '<a class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored pagination-item" href="'.get_pagenum_link($i).'"><div class="pagination-item-content">'.$i."</div></a>";
         } else {
-          echo $linkPrefix.get_pagenum_link($i).'">'.$i."</a>";
+          echo $linkPrefix.get_pagenum_link($i).'"><div class="pagination-item-content">'.$i."</div></a>";
 	      }
       }
     }
  
     // Next and last links
     if ($paged < $pages && $showitems < $pages) {
-      echo $linkPrefix.get_pagenum_link($paged + 1).'"><i class="zmdi zmdi-caret-right"></i></a>';
+      echo $linkPrefix.get_pagenum_link($paged + 1).'"><div class="pagination-item-content"><i class="zmdi zmdi-caret-right"></i></div></a>';
     }
     if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) {
-      echo $linkPrefix.get_pagenum_link($pages).'"><i class="zmdi zmdi-skip-next"></i></a>';
+      echo $linkPrefix.get_pagenum_link($pages).'"><div class="pagination-item-content"><i class="zmdi zmdi-skip-next"></i></div></a>';
     }
 
     echo '</div></div>';
