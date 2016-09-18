@@ -114,6 +114,42 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
     height: 248px;
     margin-top: -248px;
   }
+  
+  /**
+   * Card width: 5 columns
+   */
+  .mdl-card__excerpt-text__5-col {
+    min-height: 130px;
+  }
+  .mdl-card__background-colour__5-col {
+    height: 184px;
+  }
+  .mdl-card__feature-image__5-col {
+    height: 184px;
+    margin-top: -184px;
+  }
+  .mdl-card__title-text__5-col {
+    height: 184px;
+    margin-top: -184px;
+  }
+  
+  /**
+   * Card width: 7 columns
+   */
+  .mdl-card__excerpt-text__7-col {
+    min-height: 102px;
+  }
+  .mdl-card__background-colour__7-col {
+    height: 218px;
+  }
+  .mdl-card__feature-image__7-col {
+    height: 218px;
+    margin-top: -218px;
+  }
+  .mdl-card__title-text__7-col {
+    height: 218px;
+    margin-top: -218px;
+  }
 }
 
 /***************************************
