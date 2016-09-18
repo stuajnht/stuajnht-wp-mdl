@@ -150,6 +150,35 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
     height: 218px;
     margin-top: -218px;
   }
+  
+  /**
+   * Card width: 6, 12 columns
+   */
+  .mdl-card__excerpt-text__6-col {
+    min-height: 116px;
+  }
+  .mdl-card__background-colour__6-col {
+    height: 200px;
+  }
+  .mdl-card__feature-image__6-col {
+    height: 200px;
+    margin-top: -200px;
+  }
+  .mdl-card__title-text__6-col {
+    height: 200px;
+    margin-top: -200px;
+  }
+  .mdl-card__background-colour__12-col {
+    height: 200px;
+  }
+  .mdl-card__feature-image__12-col {
+    height: 200px;
+    margin-top: -200px;
+  }
+  .mdl-card__title-text__12-col {
+    height: 200px;
+    margin-top: -200px;
+  }
 }
 
 /***************************************
