@@ -75,39 +75,39 @@ function pagination($pages = '', $range = 4) {
     <button formaction="http://stackoverflow.com">Go to stackoverflow!</button>
 </form>
 */
-	$buttonPrefix = '<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect pagination-item" formaction="';
+	$linkPrefix = '<a class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect pagination-item" href="';
 
   if (1 != $pages) {
-    echo '<div class="pagination-container"><div class="pagination-items"><form>';
+    echo '<div class="pagination-container"><div class="pagination-items">';
 
     // First and previous links
     if ($paged > 2 && $paged > $range+1 && $showitems < $pages) {
-      echo $buttonPrefix.get_pagenum_link(1).'"><i class="zmdi zmdi-skip-previous"></i></button>';
+      echo $linkPrefix.get_pagenum_link(1).'"><i class="zmdi zmdi-skip-previous"></i></a>';
     }
     if ($paged > 1 && $showitems < $pages) {
-      echo $buttonPrefix.get_pagenum_link($paged - 1).'"><i class="zmdi zmdi-caret-left"></i></button>';
+      echo $linkPrefix.get_pagenum_link($paged - 1).'"><i class="zmdi zmdi-caret-left"></i></a>';
     }
  
     // Numbered links
     for ($i=1; $i <= $pages; $i++) {
       if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
         if ($paged == $i) {
-          echo '<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored pagination-item">'.$i."</button>";
+          echo '<a class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored pagination-item" href="'.get_pagenum_link($i).'">'.$i."</a>";
         } else {
-          echo $buttonPrefix.get_pagenum_link($i).'">'.$i."</button>";
+          echo $linkPrefix.get_pagenum_link($i).'">'.$i."</a>";
 	      }
       }
     }
  
     // Next and last links
     if ($paged < $pages && $showitems < $pages) {
-      echo $buttonPrefix.get_pagenum_link($paged + 1).'"><i class="zmdi zmdi-caret-right"></i></button>';
+      echo $linkPrefix.get_pagenum_link($paged + 1).'"><i class="zmdi zmdi-caret-right"></i></a>';
     }
     if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) {
-      echo $buttonPrefix.get_pagenum_link($pages).'"><i class="zmdi zmdi-skip-next"></i></button>';
+      echo $linkPrefix.get_pagenum_link($pages).'"><i class="zmdi zmdi-skip-next"></i></a>';
     }
 
-    echo '</form></div></div>';
+    echo '</div></div>';
   }
 }
 
