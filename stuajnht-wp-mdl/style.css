@@ -18,14 +18,12 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
  *******************/
 
 /**
- * Set the cards that show the blog posts on home.php to have an image height
- * of 176px (from the MDL components page) and a text colour of white.
+ * Set the cards that show the blog posts on home.php to have a text colour of white.
  *
  * Also set the background image to be centered and cover the div
  */
 .mdl-card__title {
   color: #fff;
-  /*height: 176px;*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -33,16 +31,9 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
 }
 
 /**
- * Setting a margin-top of -176px for the overlay title card divs, so that
- * the can become "stacked" when the feature image is faded in. This number
- * comes from the height of the mdl-card__title class
- * The z-index is used so that the fading of the image doesn't cover the text
+ * Setting the z-index so that the fading of the image doesn't cover the text
  */
-.mdl-card__title-overlay__feature-image {
-  /*margin-top: -176px;*/
-}
 .mdl-card__title-overlay__title-text {
-  /*margin-top: -176px;*/
   z-index: 1;
 }
 
@@ -76,8 +67,17 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
  * things don't look right. They also only apply if the screen is larger
  * than the minimum width given, which is the largest minimum size that
  * MDL uses for the grid and cell layout, to prevent smaller screen devices
- * having different height cards
+ * having different height cards. For smaller screen devices, a fixed size
+ * of 176px is used
  */
+@media (max-width: 839px) {
+  .mdl-card__title {
+    height: 176px;
+  }
+  .mdl-card__title-overlay__feature-image, .mdl-card__title-overlay__title-text {
+    margin-top: -176px;
+  }
+}
 @media (min-width: 840px) {
   /**
    * Card width: 4 columns
@@ -88,11 +88,7 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   .mdl-card__background-colour__4-col {
     height: 176px;
   }
-  .mdl-card__feature-image__4-col {
-    height: 176px;
-    margin-top: -176px;
-  }
-  .mdl-card__title-text__4-col {
+  .mdl-card__feature-image__4-col, .mdl-card__title-text__4-col {
     height: 176px;
     margin-top: -176px;
   }
@@ -106,11 +102,7 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   .mdl-card__background-colour__8-col {
     height: 248px;
   }
-  .mdl-card__feature-image__8-col {
-    height: 248px;
-    margin-top: -248px;
-  }
-  .mdl-card__title-text__8-col {
+  .mdl-card__feature-image__8-col, .mdl-card__title-text__8-col {
     height: 248px;
     margin-top: -248px;
   }
@@ -124,11 +116,7 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   .mdl-card__background-colour__5-col {
     height: 184px;
   }
-  .mdl-card__feature-image__5-col {
-    height: 184px;
-    margin-top: -184px;
-  }
-  .mdl-card__title-text__5-col {
+  .mdl-card__feature-image__5-col, .mdl-card__title-text__5-col {
     height: 184px;
     margin-top: -184px;
   }
@@ -142,11 +130,7 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   .mdl-card__background-colour__7-col {
     height: 218px;
   }
-  .mdl-card__feature-image__7-col {
-    height: 218px;
-    margin-top: -218px;
-  }
-  .mdl-card__title-text__7-col {
+  .mdl-card__feature-image__7-col, .mdl-card__title-text__7-col {
     height: 218px;
     margin-top: -218px;
   }
@@ -157,25 +141,14 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   .mdl-card__excerpt-text__6-col {
     min-height: 116px;
   }
-  .mdl-card__background-colour__6-col {
+  .mdl-card__background-colour__6-col, .mdl-card__background-colour__12-col {
     height: 200px;
   }
-  .mdl-card__feature-image__6-col {
-    height: 200px;
-    margin-top: -200px;
-  }
-  .mdl-card__title-text__6-col {
+  .mdl-card__feature-image__6-col, .mdl-card__feature-image__12-col {
     height: 200px;
     margin-top: -200px;
   }
-  .mdl-card__background-colour__12-col {
-    height: 200px;
-  }
-  .mdl-card__feature-image__12-col {
-    height: 200px;
-    margin-top: -200px;
-  }
-  .mdl-card__title-text__12-col {
+  .mdl-card__title-text__6-col, .mdl-card__title-text__12-col {
     height: 200px;
     margin-top: -200px;
   }
