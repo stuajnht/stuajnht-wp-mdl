@@ -39,7 +39,7 @@ add_filter('the_excerpt', 'replace_excerpt_ellipsis');
  *
  * See: http://sgwordpress.com/teaches/how-to-add-wordpress-pagination-without-a-plugin/
  */
-function pagination($pages = '', $range = 4) {  
+function pagination($pages = '', $range = 2) {
   $showitems = ($range * 2)+1;
 
   global $paged;
