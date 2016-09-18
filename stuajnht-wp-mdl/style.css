@@ -25,7 +25,7 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
  */
 .mdl-card__title {
   color: #fff;
-  height: 176px;
+  /*height: 176px;*/
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -39,10 +39,10 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
  * The z-index is used so that the fading of the image doesn't cover the text
  */
 .mdl-card__title-overlay__feature-image {
-  margin-top: -176px;
+  /*margin-top: -176px;*/
 }
 .mdl-card__title-overlay__title-text {
-  margin-top: -176px;
+  /*margin-top: -176px;*/
   z-index: 1;
 }
 
@@ -66,6 +66,54 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
   color: #fff;
   text-decoration: none;
   text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+/**
+ * Setting min heights for the excerpt and fixed heights for the feature
+ * images based on the width of the card
+ *
+ * These values have been manually calculated, so may need to change if
+ * things don't look right. They also only apply if the screen is larger
+ * than the minimum width given, which is the largest minimum size that
+ * MDL uses for the grid and cell layout, to prevent smaller screen devices
+ * having different height cards
+ */
+@media (min-width: 840px) {
+  /**
+   * Card width: 4 columns
+   */
+  .mdl-card__excerpt-text__4-col {
+    min-height: 160px;
+  }
+  .mdl-card__background-colour__4-col {
+    height: 176px;
+  }
+  .mdl-card__feature-image__4-col {
+    height: 176px;
+    margin-top: -176px;
+  }
+  .mdl-card__title-text__4-col {
+    height: 176px;
+    margin-top: -176px;
+  }
+  
+  /**
+   * Card width: 8 columns
+   */
+  .mdl-card__excerpt-text__8-col {
+    min-height: 72px;
+  }
+  .mdl-card__background-colour__8-col {
+    height: 248px;
+  }
+  .mdl-card__feature-image__8-col {
+    height: 248px;
+    margin-top: -248px;
+  }
+  .mdl-card__title-text__8-col {
+    height: 248px;
+    margin-top: -248px;
+  }
 }
 
 /***************************************

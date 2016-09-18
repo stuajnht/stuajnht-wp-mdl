@@ -94,7 +94,7 @@ function lastPost() {
   ?>
   <!-- Cell -->
     <div id="mdl-cell--post-<?php the_id(); ?>" class="mdl-cell mdl-cell--<?php echo $currentCellWidth; ?>-col mdl-cell--4-col-phone mdl-card mdl-shadow--4dp">
-      <div id="mdl-card__post__background-color-<?php the_id(); ?>" class="mdl-card__title"<?php
+      <div id="mdl-card__post__background-color-<?php the_id(); ?>" class="mdl-card__title mdl-card__background-colour__<?php echo $currentCellWidth; ?>-col"<?php
               // Setting the background colour to the the dominant colour
               // of the post image, so there is something to show while
               // the image itself loads
@@ -116,7 +116,7 @@ function lastPost() {
               }
            ?>>
       </div>
-      <div id="mdl-card__post__feature-image-<?php the_id(); ?>" class="mdl-card__title mdl-card__title-overlay__feature-image"<?php
+      <div id="mdl-card__post__feature-image-<?php the_id(); ?>" class="mdl-card__title mdl-card__title-overlay__feature-image mdl-card__feature-image__<?php echo $currentCellWidth; ?>-col"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
                 // Note: This seems hacky. The "the_post_thumbnail_url()" always seems to
@@ -136,13 +136,13 @@ function lastPost() {
               }
            ?>>
       </div>
-      <div id="mdl-card__title-post__title-text-<?php the_id(); ?>" class="mdl-card__title mdl-card__title-overlay__title-text">
+      <div id="mdl-card__title-post__title-text-<?php the_id(); ?>" class="mdl-card__title mdl-card__title-overlay__title-text mdl-card__title-text__<?php echo $currentCellWidth; ?>-col">
         <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       </div>
       <div class="mdl-card__supporting-text">
         Posted on <?php the_date(get_option('date_format')); ?>
       </div>
-      <div class="mdl-card__supporting-text">
+      <div class="mdl-card__supporting-text mdl-card__excerpt-text__<?php echo $currentCellWidth; ?>-col">
         <?php the_excerpt(); ?>
       </div>
       <div class="mdl-card__actions mdl-card--border">
