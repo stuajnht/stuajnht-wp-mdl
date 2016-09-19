@@ -9,12 +9,6 @@ function stuajnht_wp_mdl_scripts() {
 	wp_register_script( 'waitforimages', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.waitforimages/1.5.0/jquery.waitforimages.min.js', array ('jquery'), false, true );
 	wp_enqueue_script( 'waitforimages' );
 
-	// ThatsNotYoChild - http://www.impressivewebs.com/fixing-parent-child-opacity/
-	// Preventing parent opacity of the card post images fading
-	$thatsNotYoChild_script = get_template_directory_uri() . '/js/thatsNotYoChild.js';
-	wp_register_script( 'ThatsNotYoChild', $thatsNotYoChild_script, false, false, true );
-	wp_enqueue_script( 'ThatsNotYoChild' );
-
 	// Adding in custom stuajnht-wp-mdl scripts
 	$stuajnht_wp_mdl_script = get_template_directory_uri() . '/js/stuajnht-wp-mdl.js';
   wp_register_script( 'stuajnht-wp-mdl',  $stuajnht_wp_mdl_script, array ('jquery'), false, true);
