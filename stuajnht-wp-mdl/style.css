@@ -13,6 +13,188 @@ This theme is a WordPress implementation of the Material Design Lite library.
 It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.uk/)
 */
 
+/*******************
+ * Blog Post Cards *
+ *******************/
+
+/**
+ * Set the cards that show the blog posts on home.php to have a text colour of white.
+ *
+ * Also set the background image to be centered and cover the div
+ */
+.mdl-card__title {
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  padding: 0;
+}
+
+/**
+ * Setting the z-index so that the fading of the image doesn't cover the text
+ */
+.mdl-card__title-overlay__title-text {
+  z-index: 1;
+}
+
+/**
+ * Set the title text have a width of 100% so that it covers the image
+ * Set a transparent background so that the title text is not covered if
+ *   the image is light in colour
+ * The padding of 16px is to compensate for the mdl-card__title being removed
+ */
+.mdl-card__title-text {
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7));
+  width: 100%;
+  padding: 16px;
+}
+
+/**
+ * Setting the card title text to be white with no underline on the link
+ * Also setting a black border around it, so it is visible on light images
+ */
+.mdl-card__title-text > a {
+  color: #fff;
+  text-decoration: none;
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+/**
+ * Setting min heights for the excerpt and fixed heights for the feature
+ * images based on the width of the card
+ *
+ * These values have been manually calculated, so may need to change if
+ * things don't look right. They also only apply if the screen is larger
+ * than the minimum width given, which is the largest minimum size that
+ * MDL uses for the grid and cell layout, to prevent smaller screen devices
+ * having different height cards. For smaller screen devices, a fixed size
+ * of 176px is used
+ */
+@media (max-width: 839px) {
+  .mdl-card__title {
+    height: 176px;
+  }
+  .mdl-card__title-overlay__feature-image, .mdl-card__title-overlay__title-text {
+    margin-top: -176px;
+  }
+}
+@media (min-width: 840px) {
+  /**
+   * Card width: 4 columns
+   */
+  .mdl-card__excerpt-text__4-col {
+    min-height: 160px;
+  }
+  .mdl-card__background-colour__4-col {
+    height: 176px;
+  }
+  .mdl-card__feature-image__4-col, .mdl-card__title-text__4-col {
+    height: 176px;
+    margin-top: -176px;
+  }
+  
+  /**
+   * Card width: 8 columns
+   */
+  .mdl-card__excerpt-text__8-col {
+    min-height: 72px;
+  }
+  .mdl-card__background-colour__8-col {
+    height: 248px;
+  }
+  .mdl-card__feature-image__8-col, .mdl-card__title-text__8-col {
+    height: 248px;
+    margin-top: -248px;
+  }
+  
+  /**
+   * Card width: 5 columns
+   */
+  .mdl-card__excerpt-text__5-col {
+    min-height: 130px;
+  }
+  .mdl-card__background-colour__5-col {
+    height: 184px;
+  }
+  .mdl-card__feature-image__5-col, .mdl-card__title-text__5-col {
+    height: 184px;
+    margin-top: -184px;
+  }
+  
+  /**
+   * Card width: 7 columns
+   */
+  .mdl-card__excerpt-text__7-col {
+    min-height: 102px;
+  }
+  .mdl-card__background-colour__7-col {
+    height: 218px;
+  }
+  .mdl-card__feature-image__7-col, .mdl-card__title-text__7-col {
+    height: 218px;
+    margin-top: -218px;
+  }
+  
+  /**
+   * Card width: 6, 12 columns
+   */
+  .mdl-card__excerpt-text__6-col {
+    min-height: 116px;
+  }
+  .mdl-card__background-colour__6-col, .mdl-card__background-colour__12-col {
+    height: 200px;
+  }
+  .mdl-card__feature-image__6-col, .mdl-card__feature-image__12-col {
+    height: 200px;
+    margin-top: -200px;
+  }
+  .mdl-card__title-text__6-col, .mdl-card__title-text__12-col {
+    height: 200px;
+    margin-top: -200px;
+  }
+}
+
+/***************************************
+ *    Blog Roll Pagination Controls    *
+ **************************************/
+
+/**
+ * Formatting the links for the pagination controls that are shown
+ * at the bottom of the home.php template, to allow the user to jump
+ * between the blog roll quickly
+ *
+ * See: https://www.reddit.com/r/MaterialDesign/comments/3e96h7/pagination/ctcrqpt
+ */
+.pagination-container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pagination-items {
+  text-align: center;
+  padding-bottom: 10px;
+}
+
+.pagination-item {
+  display: inline-block;
+  line-height: 30px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.pagination-item:first-child {
+  margin-left: 10px;
+}
+
+.pagination-item:last-child {
+  margin-right: 10px;
+}
+
+.pagination-item-content {
+  margin-top: 5px;
+}
+
 /****************
  *    Footer    *
  ****************/

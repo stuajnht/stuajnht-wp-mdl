@@ -3,9 +3,168 @@ function stuajnht_wp_mdl_scripts() {
 	// MDL main script
 	wp_register_script( 'material-script', 'https://code.getmdl.io/1.2.1/material.min.js', false, false, true );
 	wp_enqueue_script( 'material-script' );
+
+	// Wait for images - https://github.com/alexanderdickson/waitForImages
+	// Fades in CSS background-url images when they're loaded
+	wp_register_script( 'waitforimages', 'https://cdnjs.cloudflare.com/ajax/libs/jquery.waitforimages/1.5.0/jquery.waitforimages.min.js', array ('jquery'), false, true );
+	wp_enqueue_script( 'waitforimages' );
+
+	// Adding in custom stuajnht-wp-mdl scripts
+	$stuajnht_wp_mdl_script = get_template_directory_uri() . '/js/stuajnht-wp-mdl.js';
+  wp_register_script( 'stuajnht-wp-mdl',  $stuajnht_wp_mdl_script, array ('jquery'), false, true);
+	wp_enqueue_script( 'stuajnht-wp-mdl' );
 }
 
 add_action( 'wp_enqueue_scripts', 'stuajnht_wp_mdl_scripts' );
+
+/**
+ * Replacing the_excerpt [...] with a genuine ellipsis character
+ */
+function replace_excerpt_ellipsis($content) {
+	return str_replace('[&hellip;]','&hellip;',$content);
+}
+add_filter('the_excerpt', 'replace_excerpt_ellipsis');
+
+/**
+ * Creating pagination links to show on home.php to aid in navigation
+ *
+ * Instead of just showing a next / previous link, show the available number
+ * of pages so that the user can jump along quickly
+ *
+ * See: http://sgwordpress.com/teaches/how-to-add-wordpress-pagination-without-a-plugin/
+ */
+function pagination($pages = '', $range = 2) {
+  $showitems = ($range * 2)+1;
+
+  global $paged;
+  if (empty($paged)) $paged = 1;
+    if ($pages == '') {
+      global $wp_query;
+      $pages = $wp_query->max_num_pages;
+      if(!$pages) {
+        $pages = 1;
+      }
+    }
+	
+	/**
+	<div class="container">
+  <div class="pagination">
+    <
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span active>5</span>
+    <span>6</span>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+  >
+  </div>
+</div>
+
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
+<button class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored">
+<form>
+    <button formaction="http://stackoverflow.com">Go to stackoverflow!</button>
+</form>
+*/
+	$linkPrefix = '<a class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-js-ripple-effect pagination-item" href="';
+
+  if (1 != $pages) {
+    echo '<div class="pagination-container"><div class="pagination-items">';
+
+    // First and previous links
+    if ($paged > 2 && $paged > $range+1 && $showitems < $pages) {
+      echo $linkPrefix.get_pagenum_link(1).'"><div class="pagination-item-content"><i class="zmdi zmdi-skip-previous"></i></div></a>';
+    }
+    if ($paged > 1 && $showitems < $pages) {
+      echo $linkPrefix.get_pagenum_link($paged - 1).'"><div class="pagination-item-content"><i class="zmdi zmdi-caret-left"></i></div></a>';
+    }
+ 
+    // Numbered links
+    for ($i=1; $i <= $pages; $i++) {
+      if (1 != $pages &&( !($i >= $paged+$range+1 || $i <= $paged-$range-1) || $pages <= $showitems )) {
+        if ($paged == $i) {
+          echo '<a class="mdl-button mdl-js-button mdl-button--fab mdl-button--mini-fab mdl-button--colored pagination-item" href="'.get_pagenum_link($i).'"><div class="pagination-item-content">'.$i."</div></a>";
+        } else {
+          echo $linkPrefix.get_pagenum_link($i).'"><div class="pagination-item-content">'.$i."</div></a>";
+	      }
+      }
+    }
+ 
+    // Next and last links
+    if ($paged < $pages && $showitems < $pages) {
+      echo $linkPrefix.get_pagenum_link($paged + 1).'"><div class="pagination-item-content"><i class="zmdi zmdi-caret-right"></i></div></a>';
+    }
+    if ($paged < $pages-1 &&  $paged+$range-1 < $pages && $showitems < $pages) {
+      echo $linkPrefix.get_pagenum_link($pages).'"><div class="pagination-item-content"><i class="zmdi zmdi-skip-next"></i></div></a>';
+    }
+
+    echo '</div></div>';
+  }
+}
+
+/**
+ * Registering support for feature images (post thumbnails) for blog posts
+ */
+add_theme_support( 'post-thumbnails' );
+
+/**
+ * Generates a feature image to show if one has not been set, based on
+ * the title of the post
+ *
+ * If a feature image hasn't been included with the post, to prevent an
+ * empty space appearing on the website, a "placeholder" image is chosen
+ * based on the first character of a MD5 hash of the post title
+ *
+ * @param string $postTitle The title of the post to generate the image from
+ * @returns string An hexadecimal character generated from the post title
+ */
+function getFeatureImagePlaceholder($postTitle = "stuajnht") {
+	return substr(md5($postTitle), 0, 1);
+}
+
+/**
+ * Gets the dominant colour for the default feature image placeholders
+ * so the background colour can be set
+ *
+ * A value of "d" is given as default text, as this is the first MD5
+ * character for the default getFeatureImagePlaceholder parameter
+ *
+ * These values have been pre-calculated from the default images using
+ * color thief (http://lokeshdhakar.com/projects/color-thief/). The key
+ * of the array is the hex character of the placeholder image. To prevent
+ * the constant construction and descruction of this array, it is created
+ * and stored outside the function and passed by reference
+ *
+ * @param string $placeholderImageName The hexadecimal character to get
+ *                                     the colour of
+ * @param array $dominantColoursArray A reference to the array of the
+ *                                    dominant colours of placeholder images
+ * @returns string A rgb representation of the dominant colour
+ */
+function getFeatureImagePlaceholderColour($placeholderImageName = "d", $dominantColoursArray) {
+	return $dominantColoursArray[$placeholderImageName];
+}
+$dominantColours = array(
+  "0" => "rgb(245, 126, 6)",
+  "1" => "rgb(207, 46, 44)",
+  "2" => "rgb(251, 178, 223)",
+  "3" => "rgb(236, 242, 44)",
+  "4" => "rgb(170, 179, 224)",
+  "5" => "rgb(7, 215, 80)",
+  "6" => "rgb(197, 217, 88)",
+	"7" => "rgb(251, 198, 40)",
+	"8" => "rgb(4, 67, 65)",
+	"9" => "rgb(136, 42, 168)",
+	"a" => "rgb(181, 218, 163)",
+	"b" => "rgb(219, 58, 55)",
+	"c" => "rgb(116, 206, 248)",
+	"d" => "rgb(97, 60, 177)",
+	"e" => "rgb(246, 156, 33)",
+	"f" => "rgb(245, 185, 57)"
+);
 
 /**
  * Registering menu locations for the theme
