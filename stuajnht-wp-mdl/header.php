@@ -8,6 +8,7 @@
 		<title><?php wp_title('|',1,'right'); ?><?php bloginfo('name'); ?></title>
 
     <link rel="stylesheet" href="https://code.getmdl.io/1.2.1/material.teal-indigo.min.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,light,bolditalic&amp;lang=en">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
     <link rel="stylesheet" href="<?php bloginfo('stylesheet_url');?>">
