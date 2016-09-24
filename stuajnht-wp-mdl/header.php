@@ -19,5 +19,5 @@
   <body>
 	
 	<main class="mdl-layout__content">
-    <div class="page-content">
+    <!--<div class="page-content">-->
     <!-- Start main content -->
