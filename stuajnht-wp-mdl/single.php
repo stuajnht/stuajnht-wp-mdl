@@ -47,12 +47,16 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     ?>>
   </div>
   <div class="mdl-grid single-banner__feature-image">
-    <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-    <div class="mdl-cell mdl-cell--8-col">
-      <?php the_title(); ?>
-    </div>
-    <div class="mdl-cell mdl-cell--2-col">
-      <?php the_date(get_option('date_format')); ?>
+    <div class="single-banner__feature-image__title-container">
+      <div class="mdl-grid">
+        <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+        <div class="mdl-cell mdl-cell--8-col single-banner__feature-image__title-text">
+          <?php the_title(); ?>
+        </div>
+        <div class="mdl-cell mdl-cell--3-col single-banner__feature-image__title-meta">
+          <?php the_date(get_option('date_format')); ?>
+        </div>
+      </div>
     </div>
   </div>
 </div>

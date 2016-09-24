@@ -54,6 +54,23 @@ body {
   overflow-y: hidden;
 }
 
+.single-banner__feature-image__title-container {
+  position: relative;
+  height: 60vh;
+  width: 100%;
+}
+
+.single-banner__feature-image__title-text {
+  position: absolute;
+  bottom: 0;
+}
+
+.single-banner__feature-image__title-meta {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}
+
 /*******************
  * Blog Post Cards *
  *******************/
