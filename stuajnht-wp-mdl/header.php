@@ -17,7 +17,4 @@
 		<?php wp_head(); ?>
   </head>
   <body>
-	
-	<main class="mdl-layout__content">
-    <!--<div class="page-content">-->
-    <!-- Start main content -->
+  <!-- Start main content -->

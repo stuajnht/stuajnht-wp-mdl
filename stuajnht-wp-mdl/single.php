@@ -2,6 +2,8 @@
 
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 ?>
+<main class="mdl-layout__content">
+<div class="page-content">
 <div class="single-post__feature-image__container">
   <div class="single-banner__feature-image"<?php
     // Setting the background colour to the the dominant colour
@@ -52,6 +54,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     </div>
   </div>
 
+</div>
+</main>
 <?php
 endwhile; endif;
 
