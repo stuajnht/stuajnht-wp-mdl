@@ -46,6 +46,11 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     ?>>
   </div>
 </div>
+  <div class="mdl-grid">
+    <div class="mdl-cell mdl-cell--1-offset-desktop mdl-cell--1-offset-tablet mdl-cell--10-col">
+      <?php the_title(); ?>
+    </div>
+  </div>
 
 <?php
 endwhile; endif;
