@@ -46,7 +46,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     }
     ?>>
   </div>
-  <div class="mdl-grid">
+  <div class="mdl-grid single-banner__feature-image">
     <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
     <div class="mdl-cell mdl-cell--8-col">
       <?php the_title(); ?>
