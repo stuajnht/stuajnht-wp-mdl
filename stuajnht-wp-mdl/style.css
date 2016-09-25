@@ -35,7 +35,7 @@ body {
  */
 .single-post__feature-image__container {
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   flex-shrink: 0;
 }
 
@@ -44,7 +44,7 @@ body {
  */
 .single-banner__feature-image {
   width: 100%;
-  height: 60vh;
+  height: 70vh;
   flex-shrink: 0;
   background-position: 50%;
   background-repeat: no-repeat;
@@ -58,7 +58,7 @@ body {
 .single-banner__feature-image__title-container {
   color: #fff;
   position: relative;
-  height: 60vh;
+  height: 70vh;
   width: 100%;
 }
 
