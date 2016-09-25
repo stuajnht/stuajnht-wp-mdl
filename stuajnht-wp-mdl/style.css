@@ -89,6 +89,19 @@ body {
   font-weight: 200;
 }
 
+/**
+ * The post content
+ */
+.single-post__page-content {
+  padding: 0 24px;
+}
+
+.single-post__page-content > p {
+  line-height: 1.8em;
+  font-size: 16px;
+  font-weight: 200;
+}
+
 /*******************
  * Blog Post Cards *
  *******************/

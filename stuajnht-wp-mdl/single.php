@@ -64,8 +64,8 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
 <main class="mdl-layout__content">
   <div class="page-content">
     <div class="mdl-grid">
-      <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-      <div class="mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800 mdl-cell mdl-cell--10-col">
+      <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+      <div class="mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800 mdl-cell mdl-cell--8-col single-post__page-content">
         <?php the_content(); ?>
       </div>
     </div>
