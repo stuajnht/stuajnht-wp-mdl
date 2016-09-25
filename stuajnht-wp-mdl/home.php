@@ -57,7 +57,7 @@ function lastPost() {
 ?>
 <main class="mdl-layout__content">
 <div class="page-content">
-<div class="mdl-grid">
+<div class="mdl-grid mdl-color--grey-200">
   <?php if (have_posts()) : while (have_posts()) : the_post();
   
   // Deciding the width of the cell
@@ -167,7 +167,7 @@ function lastPost() {
 
 <?php
 if (function_exists('pagination')) {
-  echo '<div class="mdl-grid">';
+  echo '<div class="mdl-grid mdl-color--grey-200">';
   pagination($additional_loop->max_num_pages);
   echo '</div>';
 }
