@@ -26,7 +26,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
     }
     ?>>
   </div>
-  <div class="single-banner__feature-image"<?php
+  <div id="feature-image" class="single-banner__feature-image"<?php
     // Setting the card post image to that of the blog post
     if (has_post_thumbnail()) {
       // Note: This seems hacky. The "the_post_thumbnail_url()" always seems to
