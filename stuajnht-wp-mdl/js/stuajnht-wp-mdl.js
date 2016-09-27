@@ -21,19 +21,19 @@
   /**
    * Fading the feature image on posts and pages when the page is
    * scrolled down
+   *
+   * These numbers have been created by trial and error, but they seem to
+   * give the best option. The feature image stays solid for a bit as the
+   * user scrolls down (the '1.2 -' calculation) and fades out completley
+   * to show the dominant colour before the bottom of the image reaches
+   * the top of the window (the '* 0.85' calculation). I have no idea what
+   * the '* 0.55' part does, but it works
+   *
    * See: http://stackoverflow.com/a/25424921
    */
   $(window).scroll(function(i) {
     var scrollPosition = $(window).scrollTop();
     var featureImageBottom = $(window).height() * 0.55;
-    // If the WordPress admin bar is in place, we need to add that to the
-    // scroll position so the image remains centered. We also need to double
-    // the height of the bar, as the number is halved later on
-    var wpadminbarHeight = 0;
-    if ($("#wpadminbar").length > 0) {
-      wpadminbarHeight = ($("#wpadminbar").height() * 2);
-    }
-    //$('#feature-image').css({'top': .5 * (scrollPosition + wpadminbarHeight)});
-    $('#feature-image').css({'opacity': ((featureImageBottom * 0.8) - scrollPosition) / 100});
+    $('#feature-image').css({'opacity': (1.2 - (scrollPosition / (featureImageBottom * 0.85)))});
   });
 }(jQuery));
