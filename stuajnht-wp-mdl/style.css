@@ -49,6 +49,10 @@ blockquote > p {
   font-weight: 400;
 }
 
+.mdl-layout__content {
+  width: 100%;
+}
+
 /*******************
  *   Single Post   *
  ******************/
