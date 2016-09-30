@@ -347,6 +347,14 @@ img[class*="wp-image-"] {
  ****************/
 
 /**
+ * The 'ul' items should be 14px, as we set all other 'ul' items to be 16px,
+ * so that they match with the rest of the site text
+ */
+.mdl-mini-footer__link-list {
+  font-size: 14px;
+}
+
+/**
  * Social icons colour, which should be the same as the main footer background
  */
 .mdl-mini-footer__social-btn-icon {
