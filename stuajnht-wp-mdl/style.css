@@ -126,6 +126,16 @@ blockquote > p {
   font-weight: 300;
 }
 
+/**
+ * Post images
+ */
+.wp-caption {
+  width: 100% !important;
+}
+img[class*="wp-image-"] {
+    width: 100%;
+}
+
 /*******************
  * Blog Post Cards *
  *******************/
