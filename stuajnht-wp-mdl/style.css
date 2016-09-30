@@ -14,15 +14,22 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
 */
 
 /*******************
- *       Body      *
+ *   Overwrites    *
  ******************/
 
 /**
- * The text styles here are the same as those given in the MDL stylesheet,
- * blut includes the Roboto font too as the first to be used
+ * The styles here are the same as those given in the MDL stylesheet,
+ * but overwrite some of the default settings provided in MDL, to fit
+ * with the site theme instead
  */
 body {
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+ul, ol {
+  font-weight: 200;
+  font-size: 16px;
+  line-height: 1.8em;
 }
 
 /*******************
