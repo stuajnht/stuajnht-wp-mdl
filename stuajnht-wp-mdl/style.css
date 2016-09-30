@@ -27,7 +27,7 @@ body {
 }
 
 ul, ol {
-  font-weight: 200;
+  font-weight: 300;
   font-size: 16px;
   line-height: 1.8em;
 }
@@ -106,7 +106,7 @@ ul, ol {
 .single-post__page-content > p {
   line-height: 1.8em;
   font-size: 16px;
-  font-weight: 200;
+  font-weight: 300;
 }
 
 /*******************
