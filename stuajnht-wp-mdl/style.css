@@ -93,7 +93,7 @@ body {
  * The post content
  */
 .single-post__page-content {
-  padding: 0 24px;
+  padding: 24px;
 }
 
 .single-post__page-content > p {
