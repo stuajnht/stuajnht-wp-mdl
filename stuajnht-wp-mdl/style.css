@@ -32,6 +32,23 @@ ul, ol {
   line-height: 1.8em;
 }
 
+blockquote {
+  border-left-width: 8px;
+  border-left-color: #424242;
+  border-left-style: solid;
+  padding-left: 16px;
+  margin-left: 16px;
+}
+blockquote:before, blockquote:after {
+  content: '';
+  margin-left: 0
+}
+blockquote > p {
+  line-height: 1.8em;
+  font-size: 16px;
+  font-weight: 400;
+}
+
 /*******************
  *   Single Post   *
  ******************/
