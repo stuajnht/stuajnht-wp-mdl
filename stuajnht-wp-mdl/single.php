@@ -77,7 +77,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 $output = rtrim($output, $separator);
                 echo $output . '<br>';
               } ?>
-              Published: <?php the_date(get_option('date_format')); ?><br>
+              Published: <a href="<?php echo get_month_link(get_the_date( 'Y' ), get_the_date( 'm' ) ); ?>" title="<?php echo sprintf( __( 'View all posts written in %s %s', 'textdomain' ), get_the_date( 'F' ), get_the_date( 'Y' ) ) ?>">
+                <?php the_date(get_option('date_format')); ?>
+              </a><br>
               Written by: <?php the_author_posts_link(); ?>
             </div>
           </div>
