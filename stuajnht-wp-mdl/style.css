@@ -126,7 +126,7 @@ blockquote > p {
   right: 0;
   text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
   padding-bottom: 24px;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 200;
 }
 
@@ -138,6 +138,8 @@ blockquote > p {
 .single-banner__feature-image__title-meta__content a {
   color: #fff;
   font-style: italic;
+  font-weight: 200;
+  line-height: 1.6;
   text-decoration: none;
 }
 
