@@ -135,6 +135,12 @@ blockquote > p {
   text-align: right;
 }
 
+.single-banner__feature-image__title-meta__content a {
+  color: #fff;
+  font-style: italic;
+  text-decoration: none;
+}
+
 /**
  * The post content
  */

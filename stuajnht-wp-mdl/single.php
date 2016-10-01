@@ -58,14 +58,24 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
           <div class="mdl-grid single-banner__feature-image__title-meta__content">
             <div class="mdl-cell mdl-cell--9-col">
               <?php
-              $posttags = get_the_tags();
-              $tags = '';
-              if ($posttags) {
-                foreach($posttags as $tag) {
-                  $tags .= '<a href="/tag/' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+              // Displaying category links
+              $separator = ', ';
+              $output = '';
+              $categories = get_the_category();
+              if ( ! empty( $categories ) ) {
+                foreach( $categories as $category ) {
+                  $output .= '<a href="' . esc_url( get_category_link( $category->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts in %s', 'textdomain' ), $category->name ) ) . '">' . esc_html( $category->name ) . '</a>' . $separator;
                 }
-                rtrim($tags, ", ");
-                echo $tags . '<br>';
+              }
+
+              // Displaying tag links
+              $tags = get_the_tags();
+              if ($tags) {
+                foreach($tags as $tag) {
+                  $output .= '<a href="' . esc_url( get_tag_link( $tag->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts tagged with %s', 'textdomain' ), $tag->name ) ) . '">' . esc_html( $tag->name ) . '</a>' . $separator;
+                }
+                $output = rtrim($output, $separator);
+                echo $output . '<br>';
               } ?>
               Published: <?php the_date(get_option('date_format')); ?><br>
             </div>
