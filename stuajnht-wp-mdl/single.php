@@ -78,6 +78,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 echo $output . '<br>';
               } ?>
               Published: <?php the_date(get_option('date_format')); ?><br>
+              Written by: <?php the_author_posts_link(); ?>
             </div>
           </div>
         </div>
