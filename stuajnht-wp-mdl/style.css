@@ -53,6 +53,16 @@ blockquote > p {
   width: 100%;
 }
 
+.mdl-data-table {
+  margin: 16px auto;
+}
+@media (max-width: 479px) {
+  .mdl-data-table {
+    display: block;
+    overflow: auto;
+  }
+}
+
 /*******************
  *   Single Post   *
  ******************/
