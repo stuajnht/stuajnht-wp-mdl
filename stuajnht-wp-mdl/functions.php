@@ -167,6 +167,44 @@ $dominantColours = array(
 );
 
 /**
+ * Searching post content to add the MDL classes to tables
+ *
+ * For a table to conform to MDL stylings, it needs to have the classes
+ * "mdl-data-table mdl-js-data-table" added to it. To simplify this, this
+ * function appends it automatcally to any HTML tables it finds in the
+ * page content
+ *
+ * As HTML pages cannot be parsed easilly with RegEx (I've tried), the
+ * PHP DOM Document is used to find tables, update the classes, then
+ * return the page content
+ *
+ * See: http://htmlparsing.com/php.html
+ * See: http://stackoverflow.com/a/11387770
+ */
+add_filter('the_content', 'mdl_tables');
+function mdl_tables( $content ) {
+	// Seeing if there is a table used in the content. No point in
+	// parsing the output if not
+	if (strpos($content, '<table') !== false) {
+		// Creating a DOM object
+		$pageContent = new DOMDocument();
+		$pageContent->loadHTML($content);
+
+		// Getting the classes used in each HTML table and appending
+		// the MDL classes too
+		foreach ($pageContent->getElementsByTagName('table') as $table) {
+			$table->setAttribute('class', $table->getAttribute('class') . ' mdl-data-table mdl-js-data-table');
+		}
+
+		// Returning the modified HTML content
+		return $pageContent->saveHTML();
+	} else {
+		// We're all done here, so just return the page content
+		return $content;
+	}
+}
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:
