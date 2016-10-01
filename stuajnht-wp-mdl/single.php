@@ -56,7 +56,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         </div>
         <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone single-banner__feature-image__title-meta">
           <div class="mdl-grid single-banner__feature-image__title-meta__content">
-            <div class="mdl-cell mdl-cell--9-col">
+            <div class="mdl-cell mdl-cell--8-col">
               <?php
               // Displaying category links
               $separator = ', ';
