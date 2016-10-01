@@ -54,8 +54,22 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         <div class="mdl-cell mdl-cell--8-col single-banner__feature-image__title-text">
           <h2><?php the_title(); ?></h2>
         </div>
-        <div class="mdl-cell mdl-cell--3-col mdl-cell--hide-tablet mdl-cell--hide-phone single-banner__feature-image__title-meta">
-          <?php the_date(get_option('date_format')); ?>
+        <div class="mdl-cell mdl-cell--4-col mdl-cell--hide-tablet mdl-cell--hide-phone single-banner__feature-image__title-meta">
+          <div class="mdl-grid single-banner__feature-image__title-meta__content">
+            <div class="mdl-cell mdl-cell--9-col">
+              <?php
+              $posttags = get_the_tags();
+              $tags = '';
+              if ($posttags) {
+                foreach($posttags as $tag) {
+                  $tags .= '<a href="/tag/' . $tag->slug . '" title="' . $tag->name . '">' . $tag->name . '</a>, ';
+                }
+                rtrim($tags, ", ");
+                echo $tags . '<br>';
+              } ?>
+              Published: <?php the_date(get_option('date_format')); ?><br>
+            </div>
+          </div>
         </div>
       </div>
     </div>
