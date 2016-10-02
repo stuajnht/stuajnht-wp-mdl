@@ -40,30 +40,33 @@
     <?php if(comments_open()) : ?>
       <?php if(get_option('comment_registration') && !$user_ID) : ?>
         <p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p><?php else : ?>
-        <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform">
-          <?php if($user_ID) : ?>
-            <p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
-          <?php else : ?>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="text" id="author" value="<?php echo $comment_author; ?>" tabindex="1">
-              <label class="mdl-textfield__label" for="author">Name<?php if($req) echo " (required)"; ?></label>
+        <div class="single-post__comments-form__container">
+          <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform" class="single-post__comments-form__contents">
+            <?php if($user_ID) : ?>
+              <p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
+            <?php else : ?>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
+                <input class="mdl-textfield__input" type="text" id="author" value="<?php echo $comment_author; ?>" tabindex="1">
+                <label class="mdl-textfield__label" for="author">Name<?php if($req) echo " (required)"; ?></label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
+                <input class="mdl-textfield__input" type="email" id="email" value="<?php echo $comment_author_email; ?>" tabindex="2">
+                <label class="mdl-textfield__label" for="email">Email address (will not be published)<?php if($req) echo " (required)"; ?></label>
+              </div>
+              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
+                <input class="mdl-textfield__input" type="url" id="url" value="<?php echo $comment_author_url; ?>" tabindex="3">
+                <label class="mdl-textfield__label" for="url">Website</label>
+              </div>
+            <?php endif; ?>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
+              <textarea class="mdl-textfield__input" type="text" name="comment" id="comment" rows="6" tabindex="4"></textarea>
+              <label class="mdl-textfield__label" for="comment">Comment</label>
             </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="email" id="email" value="<?php echo $comment_author_email; ?>" tabindex="2">
-              <label class="mdl-textfield__label" for="email">Email address (will not be published)<?php if($req) echo " (required)"; ?></label>
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-              <input class="mdl-textfield__input" type="url" id="url" value="<?php echo $comment_author_url; ?>" tabindex="3">
-              <label class="mdl-textfield__label" for="url">Website</label>
-          <?php endif; ?>
-          <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-            <textarea class="mdl-textfield__input" type="text" name="comment" id="comment" rows="6" tabindex="4"></textarea>
-            <label class="mdl-textfield__label" for="comment">Comment</label>
-          </div>
-          <input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
-          <input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
-          <?php do_action('comment_form', $post->ID); ?>
-        </form>
+            <input name="submit" type="submit" id="submit" tabindex="5" value="Submit Comment" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" />
+            <input type="hidden" name="comment_post_ID" value="<?php echo $id; ?>" />
+            <?php do_action('comment_form', $post->ID); ?>
+          </form>
+        </div>
       <?php endif; ?>
     <?php else : ?>
       <p>The comments are closed.</p>

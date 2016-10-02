@@ -212,6 +212,27 @@ img[class*="wp-image-"] {
   opacity: 0.75;
 }
 
+.single-post__comments-form__container {
+  background-color: #f8f8f8;
+  padding: 16px;
+}
+
+.single-post__comments-form__contents {
+  width: 100%;
+  display: table;
+}
+
+.mdl-textfield__input {
+  display: table-row !important;
+  font-weight: 300;
+  line-height: 1.6;
+  opacity: 0.8;
+}
+
+.single-post__comments-form__textfield {
+  width: 100%;
+}
+
 /*******************
  * Blog Post Cards *
  *******************/
