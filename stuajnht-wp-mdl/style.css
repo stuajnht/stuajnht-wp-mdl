@@ -14,6 +14,182 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
 */
 
 /*******************
+ *   Overwrites    *
+ ******************/
+
+/**
+ * The styles here are the same as those given in the MDL stylesheet,
+ * but overwrite some of the default settings provided in MDL, to fit
+ * with the site theme instead
+ */
+body {
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+ul, ol {
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 1.8em;
+}
+
+blockquote {
+  border-left-width: 8px;
+  border-left-color: #424242;
+  border-left-style: solid;
+  padding-left: 16px;
+  margin-left: 16px;
+}
+blockquote:before, blockquote:after {
+  content: '';
+  margin-left: 0;
+}
+blockquote > p {
+  line-height: 1.8em;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.mdl-layout__content {
+  width: 100%;
+}
+
+.mdl-data-table th, .mdl-data-table td {
+  text-align: center;
+}
+.mdl-data-table {
+  margin: 16px auto;
+}
+@media (max-width: 479px) {
+  .mdl-data-table {
+    display: block;
+    overflow: auto;
+  }
+}
+
+/*******************
+ *   Single Post   *
+ ******************/
+
+/**
+ * Creating a container that fills the width of the screen to hold
+ * the feature image in
+ */
+.single-post__feature-image__container {
+  width: 100%;
+  height: 70vh;
+  flex-shrink: 0;
+}
+
+/**
+ * The feature image and dominant background colour classes
+ */
+.single-banner__feature-image {
+  width: 100%;
+  height: 70vh;
+  flex-shrink: 0;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  padding: 0;
+  position: absolute;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.single-banner__feature-image__title-container {
+  color: #fff;
+  position: relative;
+  height: 70vh;
+  width: 100%;
+}
+
+.single-banner__feature-image__title-background {
+  background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.7));
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.single-banner__feature-image__title-text {
+  position: absolute;
+  bottom: 0;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 1);
+}
+
+.single-banner__feature-image__title-meta {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+  padding-bottom: 24px;
+  font-size: 14px;
+  font-weight: 200;
+  line-height: 1.6;
+}
+
+.single-banner__feature-image__title-meta__content {
+  padding: 0;
+  text-align: right;
+}
+
+.single-banner__feature-image__title-meta__content a {
+  color: #fff;
+  font-style: italic;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+/**
+ * The post content
+ */
+.single-post__page-content {
+  padding: 24px;
+}
+
+.single-post__page-content > p {
+  line-height: 1.8em;
+  font-size: 16px;
+  font-weight: 300;
+}
+
+/**
+ * Post images
+ */
+.wp-caption {
+  width: 100% !important;
+}
+img[class*="wp-image-"] {
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+  margin-bottom: 16px;
+}
+.wp-caption-text, .img-caption {
+  background-color: #ddd;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
+  font-style: italic;
+  text-align: center;
+  font-weight: 400;
+  font-size: 16px;
+  padding: 8px;
+  padding-top: 12px;
+  margin-top: -20px;
+}
+/**
+ * TODO: Remove once historical posts have been updated.
+ */
+.img-caption {
+  margin: 24px 0;
+}
+
+/*******************
  * Blog Post Cards *
  *******************/
 
@@ -56,7 +232,16 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
 .mdl-card__title-text > a {
   color: #fff;
   text-decoration: none;
-  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  /*text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;*/
+  text-shadow: 0px 0px 4px rgba(0, 0, 0, 1);
+}
+
+/**
+ * Preventing the text from breaking over lines when displaying info
+ * about the post, such as how long it takes to read
+ */
+.mdl-card__supporting-text__no-break {
+  white-space: pre;
 }
 
 /**
@@ -198,6 +383,14 @@ It is used as the main theme for the Stuajnht websites (https://www.stuajnht.co.
 /****************
  *    Footer    *
  ****************/
+
+/**
+ * The 'ul' items should be 14px, as we set all other 'ul' items to be 16px,
+ * so that they match with the rest of the site text
+ */
+.mdl-mini-footer__link-list {
+  font-size: 14px;
+}
 
 /**
  * Social icons colour, which should be the same as the main footer background

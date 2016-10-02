@@ -167,6 +167,62 @@ $dominantColours = array(
 );
 
 /**
+ * Searching post content to add the MDL classes to tables
+ *
+ * For a table to conform to MDL stylings, it needs to have the classes
+ * "mdl-data-table mdl-js-data-table" added to it. To simplify this, this
+ * function appends it automatcally to any HTML tables it finds in the
+ * page content
+ *
+ * As HTML pages cannot be parsed easilly with RegEx (I've tried), the
+ * PHP DOM Document is used to find tables, update the classes, then
+ * return the page content
+ *
+ * See: http://htmlparsing.com/php.html
+ * See: http://stackoverflow.com/a/11387770
+ */
+add_filter('the_content', 'mdl_tables');
+function mdl_tables( $content ) {
+	// Seeing if there is a table used in the content. No point in
+	// parsing the output if not
+	if (strpos($content, '<table') !== false) {
+		// Creating a DOM object
+		$pageContent = new DOMDocument();
+		$pageContent->loadHTML($content);
+
+		// Getting the classes used in each HTML table and appending
+		// the MDL classes too
+		foreach ($pageContent->getElementsByTagName('table') as $table) {
+			$table->setAttribute('class', $table->getAttribute('class') . ' mdl-data-table mdl-js-data-table');
+		}
+
+		// Returning the modified HTML content
+		return $pageContent->saveHTML();
+	} else {
+		// We're all done here, so just return the page content
+		return $content;
+	}
+}
+
+/**
+ * Calculates the approximate number of minutes it takes to read
+ * a blog post. Based on the work by https://github.com/twittem
+ *
+ * See: https://github.com/twittem/wp-mins-to-read/blob/386309c0a8aaf5c5c4b826fbf7209554e4561519/class-wp-mins-to-read.php#L111
+ *
+ * @param string $content The post content
+ * @return string The approximate number of minutes to read
+ */
+function minutesToRead( $content ) {
+	// Calculate post wordcount
+	$word_count = str_word_count( strip_tags( $content ) );
+	// Calculate rounded minutes to read
+	$mtr_round = round( ($word_count / 180) );
+	// if less them 1 min, make 1 min
+	return $mtr_round == 0 ? '1 min read' : $mtr_round . ' min read';
+}
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:

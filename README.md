@@ -28,7 +28,7 @@ Create a custom link with the URL to the external website and a link text that i
 ![Footer social menu custom link](/resources/readme/footer/footer-example--social-menu--custom-link.png?raw=true "Footer social menu custom link")
 
 # Feature Images
-Default feature images use those provided by Oxygenna. Please see the relevant [README](/images/post-thumbnails/README.md) for more information.
+Default feature images use those provided by Oxygenna. Please see the relevant [README](/stuajnht-wp-mdl/images/post-thumbnails/README.md) for more information.
 
 # Issues & Requests
 Please report any bugs via http://issuetemplate.com/#/stuajnht/stuajnht-wp-mdl/bug

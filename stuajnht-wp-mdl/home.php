@@ -55,8 +55,9 @@ function lastPost() {
 }
 
 ?>
-
-<div class="mdl-grid">
+<main class="mdl-layout__content">
+<div class="page-content">
+<div class="mdl-grid mdl-color--grey-200">
   <?php if (have_posts()) : while (have_posts()) : the_post();
   
   // Deciding the width of the cell
@@ -140,7 +141,8 @@ function lastPost() {
         <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       </div>
       <div class="mdl-card__supporting-text">
-        Posted on <?php the_date(get_option('date_format')); ?>
+        <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-calendar"></i> <?php the_date(get_option('date_format')); ?> |
+        <span class="mdl-card__supporting-text__no-break"><i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i> <?php echo minutesToRead(get_post_field( 'post_content' )) ?></span>
       </div>
       <div class="mdl-card__supporting-text mdl-card__excerpt-text__<?php echo $currentCellWidth; ?>-col">
         <?php the_excerpt(); ?>
@@ -166,10 +168,12 @@ function lastPost() {
 
 <?php
 if (function_exists('pagination')) {
-  echo '<div class="mdl-grid">';
+  echo '<div class="mdl-grid mdl-color--grey-200">';
   pagination($additional_loop->max_num_pages);
   echo '</div>';
 }
 ?>
+  </div>
+</main>
 
 <?php get_footer(); ?>
