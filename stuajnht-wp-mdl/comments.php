@@ -43,7 +43,11 @@
         <div class="single-post__comments-form__container">
           <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform" class="single-post__comments-form__contents">
             <?php if($user_ID) : ?>
-              <p>Logged in as <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php"><?php echo $user_identity; ?></a>. <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
+              <a href="<?php echo get_option('siteurl'); ?>/wp-admin/profile.php" class="mdl-chip mdl-chip--contact">
+                <img class="mdl-chip__contact" src="<?php echo get_avatar_url($user_ID); ?>"></img>
+                <span class="mdl-chip__text"><?php echo $user_identity; ?></span>
+              </a>
+              <p><a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
             <?php else : ?>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
                 <input class="mdl-textfield__input" type="text" id="author" value="<?php echo $comment_author; ?>" tabindex="1">
