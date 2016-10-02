@@ -141,15 +141,8 @@ function lastPost() {
         <h2 class="mdl-card__title-text"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
       </div>
       <div class="mdl-card__supporting-text">
-        <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-calendar"></i> <?php the_date(get_option('date_format')); ?> | <span class="mdl-card__supporting-text__no-break"><i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i> <?php
-              // See: https://github.com/twittem/wp-mins-to-read/blob/386309c0a8aaf5c5c4b826fbf7209554e4561519/class-wp-mins-to-read.php#L111
-              // Calculate post wordcount
-              $word_count = str_word_count( strip_tags( get_post_field( 'post_content' ) ) );
-              // Calculate rounded minutes to read
-              $mtr_round = round( ($word_count / 180) );
-              // if less them 1 min, make 1 min
-              $mtr = $mtr_round == 0 ? '1 min read' : $mtr_round . ' min read';
-              echo $mtr ?></span>
+        <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-calendar"></i> <?php the_date(get_option('date_format')); ?> |
+        <span class="mdl-card__supporting-text__no-break"><i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i> <?php echo minutesToRead(get_post_field( 'post_content' )) ?></span>
       </div>
       <div class="mdl-card__supporting-text mdl-card__excerpt-text__<?php echo $currentCellWidth; ?>-col">
         <?php the_excerpt(); ?>

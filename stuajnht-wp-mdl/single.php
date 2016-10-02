@@ -80,16 +80,7 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
               <a href="<?php echo get_month_link(get_the_date( 'Y' ), get_the_date( 'm' ) ); ?>" title="<?php echo sprintf( __( 'View all posts written in %s %s', 'textdomain' ), get_the_date( 'F' ), get_the_date( 'Y' ) ) ?>">
                 <?php the_date(get_option('date_format')); ?>
               </a> <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-calendar"></i><br>
-              <?php
-              // See: https://github.com/twittem/wp-mins-to-read/blob/386309c0a8aaf5c5c4b826fbf7209554e4561519/class-wp-mins-to-read.php#L111
-              // Calculate post wordcount
-              $word_count = str_word_count( strip_tags( get_post_field( 'post_content' ) ) );
-              // Calculate rounded minutes to read
-              $mtr_round = round( ($word_count / 180) );
-              // if less them 1 min, make 1 min
-              $mtr = $mtr_round == 0 ? '1 min read' : $mtr_round . ' min read';
-              echo $mtr . ' <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i><br>';
-              ?>
+              <?php echo minutesToRead(get_post_field( 'post_content' )) . ' <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i><br>'; ?>
               <?php the_author_posts_link(); ?> <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-account"></i>
             </div>
           </div>

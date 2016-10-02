@@ -205,6 +205,24 @@ function mdl_tables( $content ) {
 }
 
 /**
+ * Calculates the approximate number of minutes it takes to read
+ * a blog post. Based on the work by https://github.com/twittem
+ *
+ * See: https://github.com/twittem/wp-mins-to-read/blob/386309c0a8aaf5c5c4b826fbf7209554e4561519/class-wp-mins-to-read.php#L111
+ *
+ * @param string $content The post content
+ * @return string The approximate number of minutes to read
+ */
+function minutesToRead( $content ) {
+	// Calculate post wordcount
+	$word_count = str_word_count( strip_tags( $content ) );
+	// Calculate rounded minutes to read
+	$mtr_round = round( ($word_count / 180) );
+	// if less them 1 min, make 1 min
+	return $mtr_round == 0 ? '1 min read' : $mtr_round . ' min read';
+}
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:
