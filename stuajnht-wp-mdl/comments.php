@@ -8,7 +8,19 @@
 
 <div class="mdl-grid mdl-color--grey-200">
   <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
-  <div class="mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800 mdl-cell mdl-cell--8-col single-post__page-comments">
+  <div class="single-post__comments-title">
+    <span class="single-post__comments-title__title-text">
+      <?php if ( have_comments() ) :
+        printf( _nx( '1 Comment', '%1$s Comments', get_comments_number(), 'comments title'), get_comments_number() );
+      else :
+        echo 'No Comments';
+      endif; ?>
+    </span>
+  </div>
+</div>
+<div class="mdl-grid mdl-color--grey-200">
+  <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
+  <div class="mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800 mdl-cell mdl-cell--8-col single-post__comments-content">
     <?php if($comments) : ?>
       <ol>
         <?php foreach($comments as $comment) : ?>

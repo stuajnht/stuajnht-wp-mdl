@@ -190,6 +190,29 @@ img[class*="wp-image-"] {
 }
 
 /*******************
+ *    Comments     *
+ ******************/
+
+/**
+ * Spacing the distance between the bottom of the post content and
+ * the comments section title
+ */
+.single-post__comments-title {
+  margin-top: 24px;
+  margin-bottom: -16px;
+  padding-left: 16px;
+}
+
+/**
+ * Setting the comments title to be large but slightly transparent,
+ * so that it shows up against the background
+ */
+.single-post__comments-title__title-text {
+  font-size: 24px;
+  opacity: 0.75;
+}
+
+/*******************
  * Blog Post Cards *
  *******************/
 
