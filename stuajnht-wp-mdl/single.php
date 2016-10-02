@@ -97,6 +97,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         <?php the_content(); ?>
       </div>
     </div>
+    <?php if ( comments_open() || get_comments_number() ) :
+      comments_template();
+    endif; ?>
   </div>
 </main>
 <?php
