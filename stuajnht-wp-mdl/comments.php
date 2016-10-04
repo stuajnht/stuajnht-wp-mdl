@@ -1,6 +1,12 @@
 <?php if(!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME'])) : ?>
 <?php endif; ?>
 
+<?php
+// Setting up RelativeTime, to display comments as x months ago
+require 'lib/RelativeTime/Autoload.php';
+$relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
+?>
+
 <?php if(!empty($post->post_password)) : ?>
 	<?php if($_COOKIE['wp-postpass_' . COOKIEHASH] != $post->post_password) : ?>
 	<?php endif; ?>
@@ -29,7 +35,7 @@
             <p>Your comment is awaiting approval</p>
           <?php endif; ?>
           <?php comment_text(); ?>
-          <cite><?php comment_type(); ?> by <?php comment_author_link(); ?> on <?php comment_date(); ?> at <?php comment_time(); ?></cite>
+          <cite><?php comment_author_link(); ?> <?php echo $relativeTime->timeAgo(get_comment_date('Y-m-d') . " " . get_comment_time('h:i:s')); ?></cite>
         </li>
       <?php endforeach; ?>
       </ol>
