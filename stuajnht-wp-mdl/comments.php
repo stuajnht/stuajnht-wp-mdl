@@ -38,7 +38,7 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
             <img src="<?php echo get_avatar_url(get_comment_author_email()); ?>" class="comment__avatar">
             <div class="comment__author">
               <strong><?php echo get_comment_author(); ?></strong>
-              <span><?php
+              <span class="comment__date"><?php
                     $commentDateTime = get_comment_date('Y-m-d') . " " . get_comment_time('h:i:s');
                     echo '<abbr title="' . $commentDateTime . '">' . $relativeTime->timeAgo($commentDateTime) . '</abbr>';
                     ?></span>

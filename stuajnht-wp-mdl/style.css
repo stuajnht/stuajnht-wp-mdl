@@ -242,7 +242,7 @@ img[class*="wp-image-"] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  padding: 32px;
+  padding: 16px 32px 0 32px;
   box-sizing: border-box;
 }
 .comments .comment {
@@ -267,8 +267,15 @@ img[class*="wp-image-"] {
   display: flex;
   flex-direction: column;
 }
+.comment__date {
+  color: #aaa;
+  font-weight: 200;
+}
 .comments .comment > .comment__text {
-  line-height: 1.5em;
+  line-height: 1.6em;
+}
+.comments .comment > .comment__text p {
+  font-weight: 200;
 }
 .comments .comment > .comment__actions {
   display: flex;
