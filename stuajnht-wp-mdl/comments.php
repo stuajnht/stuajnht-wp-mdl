@@ -28,17 +28,30 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
   <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
   <div class="mdl-color--white mdl-shadow--4dp mdl-color-text--grey-800 mdl-cell mdl-cell--8-col single-post__comments-content">
     <?php if($comments) : ?>
-      <ol>
+      <div class="comments">
         <?php foreach($comments as $comment) : ?>
-        <li id="comment-<?php comment_ID(); ?>">
+        <div class="comment" id="comment-<?php comment_ID(); ?>">
           <?php if ($comment->comment_approved == '0') : ?>
             <p>Your comment is awaiting approval</p>
           <?php endif; ?>
-          <?php comment_text(); ?>
-          <cite><?php comment_author_link(); ?> <?php echo $relativeTime->timeAgo(get_comment_date('Y-m-d') . " " . get_comment_time('h:i:s')); ?></cite>
-        </li>
+          <header class="comment__header">
+            <img src="<?php echo get_avatar_url(get_comment_author_email()); ?>" class="comment__avatar">
+            <div class="comment__author">
+              <strong><?php echo get_comment_author(); ?></strong>
+              <span><?php
+                    $commentDateTime = get_comment_date('Y-m-d') . " " . get_comment_time('h:i:s');
+                    echo '<abbr title="' . $commentDateTime . '">' . $relativeTime->timeAgo($commentDateTime) . '</abbr>';
+                    ?></span>
+            </div>
+          </header>
+          <div class="comment__text">
+            <?php comment_text(); ?>
+          </div>
+          <nav class="comment__actions">
+          </nav>
+        </div>
       <?php endforeach; ?>
-      </ol>
+    </div>
     <?php else : ?>
       <p>No comments yet</p>
     <?php endif; ?>

@@ -233,6 +233,60 @@ img[class*="wp-image-"] {
   width: 100%;
 }
 
+/**
+ * The following sections are based on the blog template provided
+ * by getmdl.io, with a few changes to work with this theme
+ */
+.comments {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: stretch;
+  padding: 32px;
+  box-sizing: border-box;
+}
+.comments .comment {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+.comments .comment > .comment__header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 16px;
+}
+.comments .comment > .comment__header > .comment__avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  margin-right: 16px;
+}
+.comments .comment > .comment__header > .comment__author {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+.comments .comment > .comment__text {
+  line-height: 1.5em;
+}
+.comments .comment > .comment__actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 0.8em;
+  margin-top: 16px;
+}
+.comments .comment > .comment__actions button {
+  margin-right: 16px;
+  color: rgba(0, 0, 0, 0.24);
+}
+.comments .comment > .comment__answers {
+  padding-top: 32px;
+  padding-left: 48px;
+}
+
 /*******************
  * Blog Post Cards *
  *******************/
