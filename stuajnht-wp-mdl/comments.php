@@ -15,6 +15,7 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
 <div class="mdl-grid mdl-color--grey-200">
   <div class="mdl-cell mdl-cell--2-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
   <div class="single-post__comments-title">
+    <a name="comments"></a>
     <span class="single-post__comments-title__title-text">
       <?php if ( have_comments() ) :
         printf( _nx( '1 Comment', '%1$s Comments', get_comments_number(), 'comments title'), get_comments_number() );

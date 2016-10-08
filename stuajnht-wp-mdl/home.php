@@ -142,7 +142,23 @@ function lastPost() {
       </div>
       <div class="mdl-card__supporting-text">
         <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-calendar"></i> <?php the_date(get_option('date_format')); ?> |
-        <span class="mdl-card__supporting-text__no-break"><i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i> <?php echo minutesToRead(get_post_field( 'post_content' )) ?></span>
+        <span class="mdl-card__supporting-text__no-break"><i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i> <?php echo minutesToRead(get_post_field( 'post_content' )) ?></span> |
+        <span class="mdl-card__supporting-text__no-break"><?php if ( comments_open() ) :
+                $commentsCount = get_comments_number();
+                switch($commentsCount) {
+                  case 0:
+                    echo '<i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comment-outline"></i> No Comments';
+                    break;
+                  case 1:
+                    echo '<i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comment"></i> 1 Comment';
+                    break;
+                  default:
+                    echo '<i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comments"></i> ' . $commentsCount . ' Comments';
+                    break;
+                }
+              else :
+                echo '<i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comment-outline"></i> No Comments';
+              endif; ?></span>
       </div>
       <div class="mdl-card__supporting-text mdl-card__excerpt-text__<?php echo $currentCellWidth; ?>-col">
         <?php the_excerpt(); ?>
