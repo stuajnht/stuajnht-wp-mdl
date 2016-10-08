@@ -68,6 +68,7 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
     <?php if(comments_open()) : ?>
       <?php if(get_option('comment_registration') && !$user_ID) : ?>
         <p>You must be <a href="<?php echo get_option('siteurl'); ?>/wp-login.php?redirect_to=<?php echo urlencode(get_permalink()); ?>">logged in</a> to post a comment.</p><?php else : ?>
+        <div id="commentSubmitProgressBar" class="mdl-progress mdl-js-progress mdl-progress--indeterminate" style="width: 100%; visibility: hidden;"></div>
         <div class="single-post__comments-form__container">
           <form action="<?php echo get_option('siteurl'); ?>/wp-comments-post.php" method="post" id="commentform" class="single-post__comments-form__contents">
             <?php if($user_ID) : ?>
@@ -110,6 +111,8 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
             // Defining the Status message element
             var statusdiv=$('#comment-status');
             commentform.submit(function(){
+              // Display the progress bar to show something is happening
+              $('#commentSubmitProgressBar').css('visibility', 'visible');
               // Serialize and store form data
               var formdata=commentform.serialize();
               //Add a status message
@@ -122,9 +125,13 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                 url: formurl,
                 data: formdata,
                 error: function(XMLHttpRequest, textStatus, errorThrown){
+                  // Hiding the progress bar to show something is done
+                  $('#commentSubmitProgressBar').css('visibility', 'hidden');
                   statusdiv.html('<p class="ajax-error" >You might have left one of the fields blank, or be posting too quickly</p>');
                 },
                 success: function(data, textStatus){
+                  // Hiding the progress bar to show something is done
+                  $('#commentSubmitProgressBar').css('visibility', 'hidden');
                   if(/^success/i.test(data))
                     statusdiv.html('<p class="ajax-success" >Thanks for your comment. We appreciate your response.</p>');
                   else
