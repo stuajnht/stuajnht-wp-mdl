@@ -131,15 +131,17 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                 success: function(data, textStatus){
                   // Hiding the progress bar to show something is done
                   $('#commentSubmitProgressBar').css('visibility', 'hidden');
-                  if(/^success/i.test(data))
+                  if(/^success/i.test(data)) {
                     notification.MaterialSnackbar.showSnackbar({
                       message: 'Thanks for your comment. We appreciate your response.'
                     });
-                  else
+                    $( ".comments" ).append( data.slice(7) );
+                  } else {
                     notification.MaterialSnackbar.showSnackbar({
                       message: 'Please wait a while before posting your next comment.'
                     });
                   commentform.find('textarea[name=comment]').val('');
+                  }
                 }
               });
               return false;

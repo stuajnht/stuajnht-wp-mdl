@@ -231,14 +231,36 @@ add_action('comment_post', 'ajaxComment', 20, 2);
 
 // Method to handle comment submission
 function ajaxComment($comment_ID, $comment_status) {
-	// If it's an AJAX-submitted comment
-	if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
-		// Get the comment data
-		$comment = get_comment($comment_ID);
-		// Allow the email to the author to be sent
-		wp_notify_postauthor($comment_ID, $comment->comment_type);
-		// Get the comment HTML from my custom comment HTML function
-		//$commentContent = getCommentHTML($comment);
+  // If it's an AJAX-submitted comment
+  if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+    // Setting up RelativeTime, to display comments as x months ago
+    require 'lib/RelativeTime/Autoload.php';
+    $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
+
+    // Get the comment data
+    $comment = get_comment($comment_ID);
+
+    // Allow the email to the author to be sent
+    wp_notify_postauthor($comment_ID, $comment->comment_type);
+
+    // Creating a comment to display at the bottom of the comments div
+    $commentContent = '<div class="comment" id="comment-'.$comment->comment_id.'">';
+    if ($comment->comment_approved == '0') :
+    	$commentContent .= '<p>Your comment is awaiting approval</p>';
+    endif;
+    $commentContent .= '<header class="comment__header">';
+    	$commentContent .= '<img src="'.get_avatar_url($comment->comment_author_email).'" class="comment__avatar">';
+      $commentContent .= '<div class="comment__author">';
+      	$commentContent .= '<strong>'.$comment->comment_author.'</strong>';
+        $commentContent .= '<span class="comment__date">';
+          $commentDateTime = $comment->comment_date;
+         	$commentContent .= '<abbr title="' . $commentDateTime . '">' . $relativeTime->timeAgo($commentDateTime) . '</abbr></span>';
+        $commentContent .= '</div>';
+        $commentContent .= '</header>';
+      $commentContent .= '<div class="comment__text">';
+      $commentContent .= $comment->comment_content;
+      $commentContent .= '</div><nav class="comment__actions"></nav></div>';
+
 		// Kill the script, returning the comment HTML
 		die('success' . $commentContent);
 	}
