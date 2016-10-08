@@ -40,7 +40,7 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
             <div class="comment__author">
               <strong><?php echo get_comment_author(); ?></strong>
               <span class="comment__date"><?php
-                    $commentDateTime = get_comment_date('Y-m-d') . " " . get_comment_time('h:i:s');
+                    $commentDateTime = get_comment_date('Y-m-d') . " " . get_comment_time('H:i:s');
                     echo '<abbr title="' . $commentDateTime . '">' . $relativeTime->timeAgo($commentDateTime) . '</abbr>';
                     ?></span>
             </div>
