@@ -54,7 +54,15 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
       <?php endforeach; ?>
     </div>
     <?php else : ?>
-      <p>No comments yet</p>
+      <div class="comments">
+        <div class="comment" id="comment-0">
+          <div class="comment__text">
+            There's nothing here at the moment. Check back again later, or add your own comment to get things started&hellip;
+          </div>
+          <nav class="comment__actions">
+          </nav>
+        </div>
+      </div>
     <?php endif; ?>
 
     <?php if(comments_open()) : ?>
