@@ -100,14 +100,13 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
             <?php do_action('comment_form', $post->ID); ?>
           </form>
         </div>
-        <script type="text/javascript">
+        <script>
           // Submitting the comment via AJAX
           // See: wpcrux.com/ajax-submit-wordpress-comments/
           jQuery('document').ready(function($){
+            var notification = document.querySelector('.mdl-js-snackbar');
             // Get the comment form
             var commentform=$('#commentform');
-            // Add a Comment Status message
-            commentform.prepend('<div id="comment-status" ></div>');
             // Defining the Status message element
             var statusdiv=$('#comment-status');
             commentform.submit(function(){
@@ -115,8 +114,6 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
               $('#commentSubmitProgressBar').css('visibility', 'visible');
               // Serialize and store form data
               var formdata=commentform.serialize();
-              //Add a status message
-              statusdiv.html('<p class="ajax-placeholder">Processing...</p>');
               //Extract action URL from commentform
               var formurl=commentform.attr('action');
               //Post Form with data
@@ -127,15 +124,21 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                   // Hiding the progress bar to show something is done
                   $('#commentSubmitProgressBar').css('visibility', 'hidden');
-                  statusdiv.html('<p class="ajax-error" >You might have left one of the fields blank, or be posting too quickly</p>');
+                  notification.MaterialSnackbar.showSnackbar({
+                    message: 'You might have left one of the fields blank, or be posting too quickly'
+                  });
                 },
                 success: function(data, textStatus){
                   // Hiding the progress bar to show something is done
                   $('#commentSubmitProgressBar').css('visibility', 'hidden');
                   if(/^success/i.test(data))
-                    statusdiv.html('<p class="ajax-success" >Thanks for your comment. We appreciate your response.</p>');
+                    notification.MaterialSnackbar.showSnackbar({
+                      message: 'Thanks for your comment. We appreciate your response.'
+                    });
                   else
-                    statusdiv.html('<p class="ajax-error" >Please wait a while before posting your next comment</p>');
+                    notification.MaterialSnackbar.showSnackbar({
+                      message: 'Please wait a while before posting your next comment.'
+                    });
                   commentform.find('textarea[name=comment]').val('');
                 }
               });
