@@ -223,6 +223,28 @@ function minutesToRead( $content ) {
 }
 
 /**
+ * AJAX comments from posts, to prevent the whole page being reloaded
+ * See: https://davidwalsh.name/wordpress-ajax-comments
+ */
+// Send all comment submissions through "ajaxComment" method
+add_action('comment_post', 'ajaxComment', 20, 2);
+
+// Method to handle comment submission
+function ajaxComment($comment_ID, $comment_status) {
+	// If it's an AJAX-submitted comment
+	if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+		// Get the comment data
+		$comment = get_comment($comment_ID);
+		// Allow the email to the author to be sent
+		wp_notify_postauthor($comment_ID, $comment->comment_type);
+		// Get the comment HTML from my custom comment HTML function
+		//$commentContent = getCommentHTML($comment);
+		// Kill the script, returning the comment HTML
+		die('success' . $commentContent);
+	}
+}
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:
