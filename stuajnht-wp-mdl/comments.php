@@ -109,6 +109,8 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
             commentform.submit(function(){
               // Display the progress bar to show something is happening
               $('#commentSubmitProgressBar').css('visibility', 'visible');
+              // Disabling the submit button, to prevent multiple submits taking place
+              $('input[type="submit"]').prop('disabled', true).val('Submitting...');
               // Serialize and store form data
               var formdata=commentform.serialize();
               //Extract action URL from commentform
@@ -121,6 +123,8 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                 error: function(XMLHttpRequest, textStatus, errorThrown){
                   // Hiding the progress bar to show something is done
                   $('#commentSubmitProgressBar').css('visibility', 'hidden');
+                  // Enabling the submit button
+                  $('input[type="submit"]').prop('disabled', false).val('Submit Comment');
                   notification.MaterialSnackbar.showSnackbar({
                     message: 'You might have left one of the fields blank, or be posting too quickly'
                   });
@@ -128,16 +132,18 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                 success: function(data, textStatus){
                   // Hiding the progress bar to show something is done
                   $('#commentSubmitProgressBar').css('visibility', 'hidden');
+                  // Enabling the submit button
+                  $('input[type="submit"]').prop('disabled', false).val('Submit Comment');
                   if(/^success/i.test(data)) {
                     notification.MaterialSnackbar.showSnackbar({
                       message: 'Thanks for your comment. We appreciate your response.'
                     });
                     $( ".comments" ).append( data.slice(7) );
+                    commentform.find('textarea[name=comment]').val('');
                   } else {
                     notification.MaterialSnackbar.showSnackbar({
                       message: 'Please wait a while before posting your next comment.'
                     });
-                  commentform.find('textarea[name=comment]').val('');
                   }
                 }
               });
