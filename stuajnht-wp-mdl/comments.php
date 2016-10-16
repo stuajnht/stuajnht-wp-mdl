@@ -76,15 +76,15 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
               <p><a href="<?php echo get_option('siteurl'); ?>/wp-login.php?action=logout" title="Log out of this account">Log out &raquo;</a></p>
             <?php else : ?>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
-                <input class="mdl-textfield__input" type="text" id="author" value="<?php echo $comment_author; ?>" tabindex="1">
+                <input class="mdl-textfield__input" type="text" id="author" name="author" value="<?php echo $comment_author; ?>" tabindex="1">
                 <label class="mdl-textfield__label" for="author">Name<?php if($req) echo " (required)"; ?></label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
-                <input class="mdl-textfield__input" type="email" id="email" value="<?php echo $comment_author_email; ?>" tabindex="2">
+                <input class="mdl-textfield__input" type="email" id="email" name="email" value="<?php echo $comment_author_email; ?>" tabindex="2">
                 <label class="mdl-textfield__label" for="email">Email address (will not be published)<?php if($req) echo " (required)"; ?></label>
               </div>
               <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label single-post__comments-form__textfield">
-                <input class="mdl-textfield__input" type="url" id="url" value="<?php echo $comment_author_url; ?>" tabindex="3">
+                <input class="mdl-textfield__input" type="url" id="url" name="url" value="<?php echo $comment_author_url; ?>" tabindex="3">
                 <label class="mdl-textfield__label" for="url">Website</label>
               </div>
             <?php endif; ?>
