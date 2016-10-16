@@ -258,7 +258,7 @@ function ajaxComment($comment_ID, $comment_status) {
         $commentContent .= '</div>';
         $commentContent .= '</header>';
       $commentContent .= '<div class="comment__text">';
-      $commentContent .= '<p>'.$comment->comment_content.'</p>';
+      $commentContent .= '<p>'.nl2br($comment->comment_content).'</p>';
       $commentContent .= '</div><nav class="comment__actions"></nav></div>';
 
 		// Kill the script, returning the comment HTML
