@@ -139,6 +139,7 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                       message: 'Thanks for your comment. We appreciate your response.'
                     });
                     $( ".comments" ).append( data.slice(7) );
+                    $( ".comments" ).find(".comment:last").slideDown("fast").animate({ opacity: 1 }, { queue: true, duration: 'slow' });
                     commentform.find('textarea[name=comment]').val('');
                   } else {
                     notification.MaterialSnackbar.showSnackbar({

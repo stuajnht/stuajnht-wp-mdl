@@ -244,7 +244,7 @@ function ajaxComment($comment_ID, $comment_status) {
     wp_notify_postauthor($comment_ID, $comment->comment_type);
 
     // Creating a comment to display at the bottom of the comments div
-    $commentContent = '<div class="comment" id="comment-'.$comment->comment_id.'">';
+    $commentContent = '<div class="comment" id="comment-'.$comment->comment_id.'" style="display: none; opacity: 0;">';
     if ($comment->comment_approved == '0') :
       $commentModerationNeeded = ', <em>your comment is awaiting approval</em>';
     endif;
