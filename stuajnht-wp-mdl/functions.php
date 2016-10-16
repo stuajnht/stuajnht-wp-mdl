@@ -246,12 +246,12 @@ function ajaxComment($comment_ID, $comment_status) {
     // Creating a comment to display at the bottom of the comments div
     $commentContent = '<div class="comment" id="comment-'.$comment->comment_id.'">';
     if ($comment->comment_approved == '0') :
-    	$commentContent .= '<p>Your comment is awaiting approval</p>';
+      $commentModerationNeeded = ', <em>your comment is awaiting approval</em>';
     endif;
     $commentContent .= '<header class="comment__header">';
     	$commentContent .= '<img src="'.get_avatar_url($comment->comment_author_email).'" class="comment__avatar">';
       $commentContent .= '<div class="comment__author">';
-      	$commentContent .= '<strong>'.$comment->comment_author.'</strong>';
+        $commentContent .= '<strong>'.$comment->comment_author.$commentModerationNeeded.'</strong>';
         $commentContent .= '<span class="comment__date">';
           $commentDateTime = $comment->comment_date;
          	$commentContent .= '<abbr title="' . $commentDateTime . '">' . $relativeTime->timeAgo($commentDateTime) . '</abbr></span>';

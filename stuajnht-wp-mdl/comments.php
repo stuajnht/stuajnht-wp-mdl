@@ -32,13 +32,10 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
       <div class="comments">
         <?php foreach($comments as $comment) : ?>
         <div class="comment" id="comment-<?php comment_ID(); ?>">
-          <?php if ($comment->comment_approved == '0') : ?>
-            <p>Your comment is awaiting approval</p>
-          <?php endif; ?>
           <header class="comment__header">
             <img src="<?php echo get_avatar_url(get_comment_author_email()); ?>" class="comment__avatar">
             <div class="comment__author">
-              <strong><?php echo get_comment_author(); ?></strong>
+              <strong><?php echo get_comment_author(); if ($comment->comment_approved == '0') { echo ', <em>your comment is awaiting approval</em>'; } ?></strong>
               <span class="comment__date"><?php
                     $commentDateTime = get_comment_date('Y-m-d') . " " . get_comment_time('H:i:s');
                     echo '<abbr title="' . $commentDateTime . '">' . $relativeTime->timeAgo($commentDateTime) . '</abbr>';
