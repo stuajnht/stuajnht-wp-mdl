@@ -125,8 +125,15 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                   $('#commentSubmitProgressBar').css('visibility', 'hidden');
                   // Enabling the submit button
                   $('input[type="submit"]').prop('disabled', false).val('Submit Comment');
+                  // There was a problem posting according to WordPress
+                  // As there's no easy way to get the error message, it
+                  // seems to require searching the returned HTML to find
+                  // the reason for it not liking the comment. This is held
+                  // in the error message between 'p' tags
+                  // See: http://stackoverflow.com/a/14867897
+                  var errorData = XMLHttpRequest.responseText;
                   notification.MaterialSnackbar.showSnackbar({
-                    message: 'You might have left one of the fields blank, or be posting too quickly'
+                    message: errorData.substring(errorData.lastIndexOf("<p>") + 3, errorData.lastIndexOf("</p>"))
                   });
                 },
                 success: function(data, textStatus){
