@@ -129,11 +129,16 @@ $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
                   // As there's no easy way to get the error message, it
                   // seems to require searching the returned HTML to find
                   // the reason for it not liking the comment. This is held
-                  // in the error message between 'p' tags
+                  // in the error message between 'p' tags. The HTML entities
+                  // also need to be decoded from the returned string
                   // See: http://stackoverflow.com/a/14867897
+                  // See: http://stackoverflow.com/a/7394787
                   var errorData = XMLHttpRequest.responseText;
+                  var errorText = document.createElement("textarea");
+                  errorText.innerHTML = errorData.substring(errorData.lastIndexOf("<p>") + 3, errorData.lastIndexOf("</p>"));
                   notification.MaterialSnackbar.showSnackbar({
-                    message: errorData.substring(errorData.lastIndexOf("<p>") + 3, errorData.lastIndexOf("</p>"))
+                    message: errorText.value,
+                    timeout: 5000
                   });
                 },
                 success: function(data, textStatus){
