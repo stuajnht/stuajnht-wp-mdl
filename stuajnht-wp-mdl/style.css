@@ -312,6 +312,14 @@ img[class*="wp-image-"] {
 }
 
 /**
+ * Setting the feature image to be hidden by default, so that the image isn't shown
+ * loading. Once it's loaded, the waitForImages JavaScript fades the image in
+ */
+.mdl-card__title-overlay__feature-image {
+  display: none;
+}
+
+/**
  * Setting the z-index so that the fading of the image doesn't cover the text
  */
 .mdl-card__title-overlay__title-text {

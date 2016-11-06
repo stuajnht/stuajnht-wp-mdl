@@ -6,7 +6,7 @@
     $('.mdl-card__title').waitForImages({
       each: function() {
         // All descendant images have loaded, now fade in
-        $(this).hide().fadeIn(1000);
+        $(this).fadeIn(1000);
       },
       waitForAll: true
     });
