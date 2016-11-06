@@ -120,12 +120,14 @@ function lastPost() {
       <div id="mdl-card__post__feature-image-<?php the_id(); ?>" class="mdl-card__title mdl-card__title-overlay__feature-image mdl-card__feature-image__<?php echo $currentCellWidth; ?>-col"<?php
               // Setting the card post image to that of the blog post
               if (has_post_thumbnail()) {
-                // Note: This seems hacky. The "the_post_thumbnail_url()" always seems to
-                //       echo out the output, so can't be saved into a variable. Creating
-                //       the background-image url around it is the only way to get it to work
-                echo " style=\"background-image: url('";
-                  the_post_thumbnail_url();
-                echo "');\"";
+                // The 'large' image size is used, as this prevents the
+                // full size image being downloaded to the client, which
+                // slows down the loading of the blog roll
+                // A custom post image size isn't used, as the large size
+                // is wide enough to cover most screen sizes
+                echo " style=\"background-image: url('"
+                   . get_the_post_thumbnail_url(get_the_id(), 'large')
+                   . "');\"";
               } else {
                 // A feature image hasn't been included in the post, so to avoid
                 // the cards looking a bit weird / empty, include a "placeholder"
