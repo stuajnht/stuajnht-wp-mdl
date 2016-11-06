@@ -223,6 +223,50 @@ function minutesToRead( $content ) {
 }
 
 /**
+ * AJAX comments from posts, to prevent the whole page being reloaded
+ * See: https://davidwalsh.name/wordpress-ajax-comments
+ */
+// Send all comment submissions through "ajaxComment" method
+add_action('comment_post', 'ajaxComment', 20, 2);
+
+// Method to handle comment submission
+function ajaxComment($comment_ID, $comment_status) {
+  // If it's an AJAX-submitted comment
+  if(isset($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest'){
+    // Setting up RelativeTime, to display comments as x months ago
+    require 'lib/RelativeTime/Autoload.php';
+    $relativeTime = new \RelativeTime\RelativeTime(array('truncate' => 2));
+
+    // Get the comment data
+    $comment = get_comment($comment_ID);
+
+    // Allow the email to the author to be sent
+    wp_notify_postauthor($comment_ID, $comment->comment_type);
+
+    // Creating a comment to display at the bottom of the comments div
+    $commentContent = '<div class="comment" id="comment-'.$comment->comment_id.'" style="display: none; opacity: 0;">';
+    if ($comment->comment_approved == '0') :
+      $commentModerationNeeded = ', <em>your comment is awaiting approval</em>';
+    endif;
+    $commentContent .= '<header class="comment__header">';
+    	$commentContent .= '<img src="'.get_avatar_url($comment->comment_author_email).'" class="comment__avatar">';
+      $commentContent .= '<div class="comment__author">';
+        $commentContent .= '<strong>'.$comment->comment_author.$commentModerationNeeded.'</strong>';
+        $commentContent .= '<span class="comment__date">';
+          $commentDateTime = $comment->comment_date;
+         	$commentContent .= '<abbr title="' . $commentDateTime . '">' . $relativeTime->timeAgo($commentDateTime) . '</abbr></span>';
+        $commentContent .= '</div>';
+        $commentContent .= '</header>';
+      $commentContent .= '<div class="comment__text">';
+      $commentContent .= '<p>'.nl2br($comment->comment_content).'</p>';
+      $commentContent .= '</div><nav class="comment__actions"></nav></div>';
+
+		// Kill the script, returning the comment HTML
+		die('success' . $commentContent);
+	}
+}
+
+/**
  * Registering menu locations for the theme
  *
  * The available menus for this theme are:

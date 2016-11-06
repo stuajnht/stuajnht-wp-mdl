@@ -24,6 +24,12 @@
     </footer>
   <?php } // End of check for footer main menu ?>
 
+    <!-- Toast message container -->
+    <div id="snackbarToastContainer" class="mdl-js-snackbar mdl-snackbar">
+      <div class="mdl-snackbar__text"></div>
+      <button id="snackbarToastButton" class="mdl-snackbar__action" type="button"></button>
+    </div>
+
     <?php wp_footer(); ?>
 	</body>
 </html>

@@ -80,6 +80,22 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
               <a href="<?php echo get_month_link(get_the_date( 'Y' ), get_the_date( 'm' ) ); ?>" title="<?php echo sprintf( __( 'View all posts written in %s %s', 'textdomain' ), get_the_date( 'F' ), get_the_date( 'Y' ) ) ?>">
                 <?php the_date(get_option('date_format')); ?>
               </a> <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-calendar"></i><br>
+              <a href="#comments"><?php if ( comments_open() ) :
+                $commentsCount = get_comments_number();
+                switch($commentsCount) {
+                  case 0:
+                    echo 'No Comments <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comment-outline"></i>';
+                    break;
+                  case 1:
+                    echo '1 Comment <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comment"></i>';
+                    break;
+                  default:
+                    echo $commentsCount . ' Comments <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comments"></i>';
+                    break;
+                }
+              else :
+                echo 'No Comments <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-comment-outline"></i>';
+              endif; ?></a><br>
               <?php echo minutesToRead(get_post_field( 'post_content' )) . ' <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-time"></i><br>'; ?>
               <?php the_author_posts_link(); ?> <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-account"></i>
             </div>
@@ -97,6 +113,9 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
         <?php the_content(); ?>
       </div>
     </div>
+    <?php if ( comments_open() || get_comments_number() ) :
+      comments_template();
+    endif; ?>
   </div>
 </main>
 <?php
