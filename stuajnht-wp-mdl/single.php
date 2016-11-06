@@ -74,9 +74,10 @@ if ( have_posts() ) : while ( have_posts() ) : the_post();
                 foreach($tags as $tag) {
                   $output .= '<a href="' . esc_url( get_tag_link( $tag->term_id ) ) . '" title="' . esc_attr( sprintf( __( 'View all posts tagged with %s', 'textdomain' ), $tag->name ) ) . '">' . esc_html( $tag->name ) . '</a>' . $separator;
                 }
-                $output = rtrim($output, $separator);
-                echo $output . ' <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-tag"></i><br>';
-              } ?>
+              }
+
+              echo rtrim($output, $separator) . ' <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-tag"></i><br>';
+              ?>
               <a href="<?php echo get_month_link(get_the_date( 'Y' ), get_the_date( 'm' ) ); ?>" title="<?php echo sprintf( __( 'View all posts written in %s %s', 'textdomain' ), get_the_date( 'F' ), get_the_date( 'Y' ) ) ?>">
                 <?php the_date(get_option('date_format')); ?>
               </a> <i class="zmdi zmdi-hc-fw zmdi-hc-lg zmdi-calendar"></i><br>
