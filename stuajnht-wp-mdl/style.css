@@ -189,14 +189,20 @@ div[id*="gallery-"] img {
   border: none !important;
   border-radius: 4px;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, .14), 0 1px 10px 0 rgba(0, 0, 0, .12), 0 2px 4px -1px rgba(0, 0, 0, .2);
-}
-.gallery-columns-3 img {
   width: 100%;
   height: auto;
+}
+.gallery-columns-2 .gallery-item {
+  padding-left: 5%;
+  padding-right: 5%;
+  width: 40% !important;
 }
 .gallery-columns-3 .gallery-item {
   padding: 1%;
   width: 31% !important;
+}
+.gallery-caption {
+  margin-top: -4px;
 }
 /**
  * TODO: Remove once historical posts have been updated.
