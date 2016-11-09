@@ -190,6 +190,9 @@ img[class*="wp-image-"] {
   padding-top: 12px;
   margin-top: -20px;
 }
+.post-image-fullwidth, .post-image-fullwidth img {
+  width: 100% !important;
+}
 /**
  * Gallery images
  */
