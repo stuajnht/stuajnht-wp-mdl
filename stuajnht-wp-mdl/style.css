@@ -194,6 +194,21 @@ img[class*="wp-image-"] {
   width: 100% !important;
 }
 /**
+ * Setting post images (and ones with captions) to have a width of "75%" on
+ * small screens, so that it's easier to see them
+ */
+@media (max-width: 839px) {
+  img[class*="wp-image-"], .wp-caption {
+    width: 75% !important;
+  }
+  .wp-caption img {
+    width: 100% !important;
+  }
+  .post-image-fullwidth, .post-image-fullwidth img {
+    width: 100% !important;
+  }
+}
+/**
  * Gallery images
  */
 div[id*="gallery-"] img {
