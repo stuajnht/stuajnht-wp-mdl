@@ -31,5 +31,6 @@
     </div>
 
     <?php wp_footer(); ?>
+    </div><!-- End of navigation bar -->
 	</body>
 </html>

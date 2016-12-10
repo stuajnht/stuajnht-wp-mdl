@@ -3,6 +3,12 @@
 if ( have_posts() ) : while ( have_posts() ) : the_post();
 ?>
 
+<?php
+// Requiring the navbar and setting options
+$navbarOptions['coverFeatureImage'] = true;
+require 'inc/navbar.php';
+?>
+
 <div class="single-post__feature-image__container">
   <div class="single-banner__feature-image"<?php
     // Setting the background colour to the the dominant colour

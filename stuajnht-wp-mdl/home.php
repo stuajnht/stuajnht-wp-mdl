@@ -55,6 +55,10 @@ function lastPost() {
 }
 
 ?>
+<?php
+// Requiring the navbar and setting options
+require 'inc/navbar.php';
+?>
 <main class="mdl-layout__content">
 <div class="page-content">
 <div class="mdl-grid mdl-color--grey-200">

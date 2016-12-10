@@ -17,4 +17,10 @@
 		<?php wp_head(); ?>
   </head>
   <body>
+	<?php
+		// Creating a navigation bar options array so there isn't
+		// a null error when accessing the array
+		// See: navbar.php
+		$navbarOptions = array();
+	?>
   <!-- Start main content -->
