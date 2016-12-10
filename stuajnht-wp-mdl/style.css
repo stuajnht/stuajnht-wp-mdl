@@ -67,6 +67,19 @@ blockquote > p {
 }
 
 /*******************
+ * Navigation Bar  *
+ ******************/
+
+/**
+ * Moving the page content up behind the navigation bar, so that
+ * the feature image is shown behind it. The height of the MDL
+ * navigation bar is 64px
+ */
+.mdl-layout__header--cover-feature-image {
+  margin-bottom: -64px;
+}
+
+/*******************
  *   Single Post   *
  ******************/
 

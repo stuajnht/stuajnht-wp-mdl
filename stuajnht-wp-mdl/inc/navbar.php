@@ -17,8 +17,23 @@
  *        the feature image on post (single.php) pages
  */
 
+/**
+ * Adding additional classes to the navigation bar header tag
+ *
+ * Based on the options that are set in the navbarOptions array,
+ * the classes created for the header tag are added or removed
+ *
+ * @param $navbarOptions array The options that have been set for the navbar
+ * @return string A list of classes that are to be set in the header tag
+ */
 function headerTagOptions($navbarOptions) {
-	return "mdl-layout__header--transparent mdl-layout__header--seamed";
+	$headerTagClasses = '';
+
+	if (array_key_exists('coverFeatureImage', $navbarOptions) && $navbarOptions['coverFeatureImage']) {
+		$headerTagClasses .= ' mdl-layout__header--transparent mdl-layout__header--seamed mdl-layout__header--cover-feature-image';
+	}
+
+	return $headerTagClasses;
 }
 
 ?>
