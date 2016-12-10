@@ -1,5 +1,4 @@
   <!-- End main content -->
-  </div><!-- End of navigation bar -->
   <?php if ( has_nav_menu( 'footer-main-menu' ) ) { // Check for footer main menu ?>
     <footer class="mdl-mini-footer">
       <div class="mdl-mini-footer__left-section">
@@ -30,6 +29,8 @@
       <div class="mdl-snackbar__text"></div>
       <button id="snackbarToastButton" class="mdl-snackbar__action" type="button"></button>
     </div>
+
+    </div><!-- End of navigation bar -->
 
     <?php wp_footer(); ?>
 	</body>
