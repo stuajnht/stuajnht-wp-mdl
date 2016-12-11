@@ -51,6 +51,7 @@ blockquote > p {
 
 .mdl-layout__content {
   width: 100%;
+  overflow: visible;
 }
 
 .mdl-data-table th, .mdl-data-table td {
